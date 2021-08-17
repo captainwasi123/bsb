@@ -11,6 +11,18 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'tbl_users_info';
+
+    public static function addUser(array $data){
+        $u = new User;
+        $u->name = $data['fullname'];
+        $u->email = $data['email'];
+        $u->password = bcrypt($data['password']);
+        $u->status = '1';
+        $u->vendor_status = '0';
+        $u->save();
+    }
+
     /**
      * The attributes that are mass assignable.
      *
