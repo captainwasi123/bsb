@@ -30,3 +30,12 @@ use Illuminate\Support\Facades\Route;
         Route::post('login', 'webController@loginSubmit');
         Route::post('register', 'webController@registerSubmit');
     });
+
+
+
+
+//User Dashboard
+    Route::prefix('user')->namespace('user')->middleware('userAuth')->group(function(){
+
+        Route::get('/', 'userController@index')->name('user.dashboard');
+    });

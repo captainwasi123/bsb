@@ -10,7 +10,7 @@
                   <i class="fa fa-user"> </i> 
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <a class="dropdown-item" href="#">Profile</a>
+                     <a class="dropdown-item" href="{{route('user.dashboard')}}">Profile</a>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="{{route('web.logout')}}">Logout</a>
                   </div>
@@ -43,11 +43,11 @@
          </div>
 
          @if(!Auth::check())
-         <div class="menu-item authLinks">
-            <a href="{{route('web.login')}}"> LOGIN </a>
-            <a href="javascript:void(0)">/</a>
-            <a href="{{route('web.register')}}"> REGISTER </a>
-         </div>
+            <div class="menu-item authLinks">
+               <a href="{{route('web.login')}}"> LOGIN </a>
+               <a href="javascript:void(0)">/</a>
+               <a href="{{route('web.register')}}"> REGISTER </a>
+            </div>
          @endif
         
       </div>
