@@ -39,3 +39,21 @@ use Illuminate\Support\Facades\Route;
 
         Route::get('/', 'userController@index')->name('user.dashboard');
     });
+
+
+//User Dashboard
+    Route::prefix('vendr')->namespace('vendor')->group(function(){
+
+        Route::get('/', 'vendorController@index')->name('vendor.dashboard')->name('vendor.index');
+
+        Route::get('/profile/basicInformation', 'vendorController@basicInfo')->name('vendor.profile.basicInfo');
+        Route::get('/profile/security', 'vendorController@passSecurity')->name('vendor.profile.passSecurity');
+
+        Route::get('/product/add', 'vendorController@addNewProduct')->name('vendor.product.addNewProduct');
+        Route::get('/product/all', 'vendorController@allProduct')->name('vendor.product.allProduct');
+        Route::get('/product/pending', 'vendorController@pendingProduct')->name('vendor.product.pendingProduct');
+        Route::get('/product/approve', 'vendorController@approveProduct')->name('vendor.product.approveProduct');
+        Route::get('/product/reject', 'vendorController@rejectProduct')->name('vendor.product.rejectProduct');
+        Route::get('/virtual/plan', 'vendorController@memberPlan')->name('vendor.virtual.memberPlan');
+        Route::get('/virtual/status', 'vendorController@memberStatus')->name('vendor.virtual.memberStatus');
+    });

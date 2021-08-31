@@ -63,3 +63,70 @@ a {
 h1, h2, h3, h4, h5, h6 {
     color: #ffffff !important;
 }
+
+input.form-control {
+    color: #FFFFFE !important;
+    background: #2b2b2b !important;
+}
+textarea.form-control {
+	color: #FFFFFE !important;
+    background: #2b2b2b !important;
+}
+.gold-c
+{
+	color: #cb8819 !important;
+	border: none;
+	box-shadow: none;
+}
+.gold-b
+{
+	background: #cb8819;
+	border: none;
+	box-shadow: none;
+}
+button.btn.btn-success.gold-b:hover {
+	background: #cb8819;
+	border: none;
+	box-shadow: none;
+}
+.dropify-wrapper {
+    height: 150px !important;
+ 
+    color: #fff !important;
+    background-color: #cb8819 !important;
+ }
+ table#myTable  {
+    color: white;
+     background: #cb8819;
+   
+}
+.table td{
+     background: #2b2b2b;
+         vertical-align: baseline;
+
+}
+.action
+{
+	margin: 0 auto;
+    text-align: center;
+}
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #747575;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #cb8819;
+
+}
+div#myTable_length select {
+    color: white;
+    background: #2b2b2b;
+    border: 1px solid #cb8819;
+}
+a.paginate_button.current {
+    background: #cb8819 !important;
+    border: 1px solid #fff !important;
+}
+.package h3 {
+    padding-left: 10px;
+    padding-top: 15px;
+}
