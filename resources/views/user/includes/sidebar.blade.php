@@ -11,9 +11,23 @@
             <!-- User profile text-->
             <div class="profile-text">
                 <h5>{{Auth::user()->name}}</h5>
-                <a href="{{route('web.logout')}}" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
-                    Become a Vendor
-                </a>
+                @if(Auth::user()->vendor_status == '0')
+                    <a href="" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
+                        Become a Vendor
+                    </a>
+                @elseif(Auth::user()->vendor_status == '1')
+                    <a href="" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
+                        Vendor In-Review
+                    </a>
+                @elseif(Auth::user()->vendor_status == '2')
+                    <a href="{{route('vendor.index')}}" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
+                        Vendor Dashboard
+                    </a>
+                @elseif(Auth::user()->vendor_status == '1')
+                    <a href="" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
+                        Vendor Rejected
+                    </a>
+                @endif
                 
             </div>
         </div>

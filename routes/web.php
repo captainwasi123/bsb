@@ -42,12 +42,18 @@ use Illuminate\Support\Facades\Route;
 
 
 //User Dashboard
-    Route::prefix('vendr')->namespace('vendor')->group(function(){
+    Route::prefix('vendr')->namespace('vendor')->middleware('vendorAuth')->group(function(){
 
-        Route::get('/', 'vendorController@index')->name('vendor.dashboard')->name('vendor.index');
+        Route::get('/', 'vendorController@index')->name('vendor.index');
 
-        Route::get('/profile/basicInformation', 'vendorController@basicInfo')->name('vendor.profile.basicInfo');
-        Route::get('/profile/security', 'vendorController@passSecurity')->name('vendor.profile.passSecurity');
+        //Profile
+            Route::prefix('profile')->group(function(){
+                
+                Route::get('basicInformation', 'vendorController@basicInfo')->name('vendor.profile.basicInfo');
+                Route::post('basicInformation', 'vendorController@basicInfoSubmit');
+
+                Route::get('security', 'vendorController@passSecurity')->name('vendor.profile.passSecurity');
+            });
 
         Route::get('/product/add', 'vendorController@addNewProduct')->name('vendor.product.addNewProduct');
         Route::get('/product/all', 'vendorController@allProduct')->name('vendor.product.allProduct');

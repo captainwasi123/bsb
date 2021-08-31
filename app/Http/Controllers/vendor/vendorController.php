@@ -4,6 +4,9 @@ namespace App\Http\Controllers\vendor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\countries;
+use App\Models\User;
+use Auth;
 
 class vendorController extends Controller
 {
@@ -13,9 +16,27 @@ class vendorController extends Controller
     	return view('vendor.index');
     }
     function basicInfo(){
+        $data['countries'] = countries::all();
 
-    	return view('vendor.profile.basic_info');
+    	return view('vendor.profile.basic_info')->with($data);
     }
+    function basicInfoSubmit(Request $request){
+        $data = $request->all();
+
+        User::updateVendor($data);
+        if ($request->hasFile('logo_file')) {
+            $file = $request->file('logo_file');
+            $filename = Auth::id().'-'.date('dmyHis').'.'.$file->getClientOriginalExtension();
+            $file->move(base_path('/public/storage/vendor/logo/'), $filename);
+
+            User::updateLogo($filename);
+        }
+        return redirect()->back()->with('success', 'Profile Updated.');
+    }
+
+
+
+
     function passSecurity(){
 
     	return view('vendor.profile.pass_security');
