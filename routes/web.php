@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\Route;
     });
 
 
-//User Dashboard
+//Vendor Dashboard
     Route::prefix('vendr')->namespace('vendor')->group(function(){
 
         Route::get('/', 'vendorController@index')->name('vendor.dashboard')->name('vendor.index');
@@ -56,4 +56,34 @@ use Illuminate\Support\Facades\Route;
         Route::get('/product/reject', 'vendorController@rejectProduct')->name('vendor.product.rejectProduct');
         Route::get('/virtual/plan', 'vendorController@memberPlan')->name('vendor.virtual.memberPlan');
         Route::get('/virtual/status', 'vendorController@memberStatus')->name('vendor.virtual.memberStatus');
+    });
+
+
+//Admin Dashboard
+    Route::prefix('admin')->namespace('admin')->group(function(){
+
+        Route::get('/', 'adminController@index')->name('admin.dashboard')->name('admin.index');
+
+        Route::get('/vendor/new', 'adminController@vendorNew')->name('admin.vendor.vendorNew');
+        Route::get('/vendor/featured', 'adminController@vendorFeatured')->name('admin.vendor.vendorFeatured');
+        Route::get('/vendor/active', 'adminController@vendorActive')->name('admin.vendor.vendorActive');
+        Route::get('/vendor/blocked', 'adminController@vendorBlocked')->name('admin.vendor.vendorBlocked');
+
+        Route::get('/users/all', 'adminController@usersAll')->name('admin.users.usersAll');
+        Route::get('/users/blocked', 'adminController@usersBlocked')->name('admin.users.usersBlocked');
+        Route::get('/users/premium', 'adminController@usersPremium')->name('admin.users.usersPremium');
+
+        Route::get('/setting/role', 'adminController@settingRole')->name('admin.setting.settingRole');
+
+        Route::get('/product/pending', 'adminController@productPending')->name('admin.featured_product.productPending');
+        Route::get('/product/publish', 'adminController@productPublish')->name('admin.featured_product.productPublish');
+        Route::get('/product/expired', 'adminController@productExpired')->name('admin.featured_product.productExpired');
+        Route::get('/product/blocked', 'adminController@productBlocked')->name('admin.featured_product.productBlocked');
+
+        Route::get('/member/pending', 'adminController@memberPending')->name('admin.featured_member.memberPending');
+        Route::get('/member/publish', 'adminController@memberPublish')->name('admin.featured_member.memberPublish');
+        Route::get('/member/expired', 'adminController@memberExpired')->name('admin.featured_member.memberExpired');
+        Route::get('/member/blocked', 'adminController@memberBlocked')->name('admin.featured_member.memberBlocked');
+        Route::get('/member/cancel', 'adminController@memberCancel')->name('admin.featured_member.memberCancel');
+
     });
