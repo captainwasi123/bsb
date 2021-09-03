@@ -36,7 +36,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Hi, <strong>{{Auth::user()->name}}</strong> |
-                        <img src="{{URL::to('/public/admin')}}/images/users/placeholder.png" alt="user" class="profile-pic" />
+                        <img src="{{URL::to('/')}}/public/storage/vendor/logo/{{Auth::user()->logo}}" onerror="this.onerror=null;this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';" alt="user" class="profile-pic" />
                     </a>
                     <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">

@@ -4,16 +4,14 @@
         <!-- User profile -->
         <div class="user-profile">
             <!-- User profile image -->
-            <div class="profile-img"> <img src="{{URL::to('/public/admin')}}/images/users/placeholder.png" alt="user" />
+            <div class="profile-img"> <img src="{{URL::to('/')}}/public/storage/vendor/logo/{{Auth::user()->logo}}" onerror="this.onerror=null;this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"  alt="user" />
                 <!-- this is blinking heartbit-->
                 <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
             </div>
             <!-- User profile text-->
             <div class="profile-text">
                 <h5>{{Auth::user()->name}}</h5>
-                <a href="{{route('web.logout')}}" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
-                    Become a Vendor
-                </a>
+                <span>Vendor</span>
                 
             </div>
         </div>
