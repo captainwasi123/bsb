@@ -38,16 +38,21 @@ use Illuminate\Support\Facades\Route;
     Route::prefix('user')->namespace('user')->middleware('userAuth')->group(function(){
 
         Route::get('/', 'userController@index')->name('user.dashboard');
+
+        Route::get('/membership/plan', 'userController@memberPlan')->name('user.membership.memberPlan');
+        Route::get('/membership/status', 'userController@memberStatus')->name('user.membership.memberStatus');
+
+        Route::get('/whishlist/product', 'userController@whishlistProduct')->name('user.whishlist.whishlistProduct');
+        Route::get('/whishlist/vendors', 'userController@whishlistVendors')->name('user.whishlist.whishlistVendors');
+
+        Route::get('/setting/profile', 'userController@settingProfile')->name('user.setting.settingProfile');
+        Route::get('/setting/password', 'userController@settingPassword')->name('user.setting.settingPassword');
+
     });
 
-
-<<<<<<< HEAD
-//Vendor Dashboard
-    Route::prefix('vendr')->namespace('vendor')->group(function(){
-=======
 //User Dashboard
     Route::prefix('vendr')->namespace('vendor')->middleware('vendorAuth')->group(function(){
->>>>>>> 26e1dbb7d54cde51873d594cc807fe79a2345f1c
+
 
         Route::get('/', 'vendorController@index')->name('vendor.index');
 
@@ -68,6 +73,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/virtual/plan', 'vendorController@memberPlan')->name('vendor.virtual.memberPlan');
         Route::get('/virtual/status', 'vendorController@memberStatus')->name('vendor.virtual.memberStatus');
     });
+
 
 
 //Admin Dashboard
@@ -98,3 +104,4 @@ use Illuminate\Support\Facades\Route;
         Route::get('/member/cancel', 'adminController@memberCancel')->name('admin.featured_member.memberCancel');
 
     });
+
