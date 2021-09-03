@@ -11,10 +11,6 @@
             <!-- User profile text-->
             <div class="profile-text">
                 <h5>{{Auth::user()->name}}</h5>
-                <a href="{{route('web.logout')}}" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
-                    Become a Vendor
-                </a>
-                
             </div>
         </div>
         <!-- End User profile text-->
