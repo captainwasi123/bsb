@@ -20,7 +20,7 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="nav-devider"></li>
-                <li> <a class="waves-effect waves-dark" href=""><i class="mdi mdi-gauge"></i>Dashboard</a>
+                <li> <a class="waves-effect waves-dark" href="{{route('vendor.index')}}"><i class="mdi mdi-gauge"></i>Dashboard</a>
                 </li>
                 <li class="nav-small-cap">PROFILE</li>
                 <li><a href="{{route('vendor.profile.basicInfo')}}">BASIC INFO </a></li>

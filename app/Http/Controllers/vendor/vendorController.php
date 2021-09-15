@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\countries;
 use App\Models\User;
 use Auth;
+use Hash;
 
 class vendorController extends Controller
 {
@@ -41,26 +42,27 @@ class vendorController extends Controller
 
     	return view('vendor.profile.pass_security');
     }
-    function addNewProduct(){
+    function passSecuritySubmit(Request $request){
+        $data = $request->all();
+        $password = $request->input('old_password');
 
-    	return view('vendor.product.add_new_product');
-    }
-    function allProduct(){
+        $user = User::find(Auth::id());
+        if (!Hash::check($password, $user->password)) {
+            return redirect()->back()->with('error', 'Current password is incorrect.');
+        }else{
+            if($data['password'] == $data['password_confirmation']){
+                $user->password = bcrypt($data['password']);
+                $user->save();
 
-    	return view('vendor.product.all_product');
+                return redirect()->back()->with('success', 'Password updated.');
+            }else{
+                return redirect()->back()->with('error', 'Password does not match.');
+            }
+        }
     }
-    function pendingProduct(){
 
-    	return view('vendor.product.pending_product');
-    }
-    function approveProduct(){
 
-    	return view('vendor.product.approve_product');
-    }
-    function rejectProduct(){
 
-    	return view('vendor.product.reject_product');
-    }
     function memberPlan(){
 
     	return view('vendor.virtual.member_plan');

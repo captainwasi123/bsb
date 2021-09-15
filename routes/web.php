@@ -63,13 +63,25 @@ use Illuminate\Support\Facades\Route;
                 Route::post('basicInformation', 'vendorController@basicInfoSubmit');
 
                 Route::get('security', 'vendorController@passSecurity')->name('vendor.profile.passSecurity');
+                Route::post('security', 'vendorController@passSecuritySubmit');
             });
 
-        Route::get('/product/add', 'vendorController@addNewProduct')->name('vendor.product.addNewProduct');
-        Route::get('/product/all', 'vendorController@allProduct')->name('vendor.product.allProduct');
-        Route::get('/product/pending', 'vendorController@pendingProduct')->name('vendor.product.pendingProduct');
-        Route::get('/product/approve', 'vendorController@approveProduct')->name('vendor.product.approveProduct');
-        Route::get('/product/reject', 'vendorController@rejectProduct')->name('vendor.product.rejectProduct');
+        //Products
+            Route::prefix('product')->group(function(){
+
+                Route::get('add', 'productController@addNewProduct')->name('vendor.product.addNewProduct');
+                Route::post('add', 'productController@addNewProductSubmit');
+
+                Route::get('all', 'productController@allProduct')->name('vendor.product.allProduct');
+                Route::get('pending', 'productController@pendingProduct')->name('vendor.product.pendingProduct');
+                Route::get('approve', 'productController@approveProduct')->name('vendor.product.approveProduct');
+                Route::get('reject', 'productController@rejectProduct')->name('vendor.product.rejectProduct');
+
+                Route::get('delete/{id}', 'productController@deleteProduct');
+                Route::get('edit/{id}', 'productController@editProduct')->name('vendor.product.edit');
+                Route::post('update', 'productController@updateProduct')->name('vendor.product.update');
+            });
+
         Route::get('/virtual/plan', 'vendorController@memberPlan')->name('vendor.virtual.memberPlan');
         Route::get('/virtual/status', 'vendorController@memberStatus')->name('vendor.virtual.memberStatus');
     });
