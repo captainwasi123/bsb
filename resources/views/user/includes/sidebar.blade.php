@@ -16,7 +16,7 @@
                         Become a Vendor
                     </a>
                 @elseif(Auth::user()->vendor_status == '1')
-                    <a href="" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
+                    <a href="javascript:void(0)" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
                         Vendor In-Review
                     </a>
                 @elseif(Auth::user()->vendor_status == '2')
@@ -24,7 +24,7 @@
                         Vendor Dashboard
                     </a>
                 @elseif(Auth::user()->vendor_status == '1')
-                    <a href="" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
+                    <a href="javascript:void(0)" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
                         Vendor Rejected
                     </a>
                 @endif

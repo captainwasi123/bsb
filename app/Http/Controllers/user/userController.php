@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class userController extends Controller
 {
@@ -35,5 +36,13 @@ class userController extends Controller
     function settingPassword(){
 
     	return view('user.setting.change_password');
+    }
+
+    //Become a vendor
+    function becomeVendor(Request $request){
+        $data = $request->all();
+        User::becomeVendor($data);
+        
+        return redirect()->back()->with('success', 'Request submitted.');
     }
 }

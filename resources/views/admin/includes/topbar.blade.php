@@ -35,7 +35,7 @@
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Hi, <strong>{{Auth::user()->name}}</strong> |
+                        Hi, <strong>{{Auth::guard('admin')->user()->fullname}}</strong> |
                         <img src="{{URL::to('/public/admin')}}/images/users/placeholder.png" alt="user" class="profile-pic" />
                     </a>
                     <div class="dropdown-menu dropdown-menu-right scale-up">
@@ -44,9 +44,9 @@
                                 <div class="dw-user-box">
                                     <div class="u-img"><img src="{{URL::to('/public/admin')}}/images/users/placeholder.png" alt="user"></div>
                                     <div class="u-text">
-                                        <h4>{{Auth::user()->name}}</h4>
-                                        <p class="text-muted">{{Auth::user()->email}}</p>
-                                        <a href="{{route('web.logout')}}" class="btn btn-rounded btn-danger btn-sm" style="color:#fff !important;">
+                                        <h4>{{Auth::guard('admin')->user()->fullname}}</h4>
+                                        <p class="text-muted">{{Auth::guard('admin')->user()->email}}</p>
+                                        <a href="{{route('admin.logout')}}" class="btn btn-rounded btn-danger btn-sm" style="color:#fff !important;">
                                             <span class="fa fa-sign-out"></span>&nbsp;Logout
                                         </a>
                                     </div>

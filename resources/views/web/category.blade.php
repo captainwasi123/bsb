@@ -1,13 +1,13 @@
 @extends('web.includes.master')
-@section('title', 'Snob '.$data->name)
+@section('title', 'Snob '.$category->name)
 @section('content')
 
 <!-- Category Banner  Section Starts Here -->
    <section class="category-banner cat-bg1 text-center">
       <div class="container">
-         <h1> SNOB {{strtoupper($data->name)}} </h1>
-         <h4> {{$data->title}}  </h4>
-         <p> {{$data->description}} </p>
+         <h1> SNOB {{strtoupper($category->name)}} </h1>
+         <h4> {{$category->title}}  </h4>
+         <p> {{$category->description}} </p>
       </div>
    </section>
    <!-- Category Banner  Section Ends Here -->
@@ -73,108 +73,30 @@
             <h3> Featured Products </h3>
          </div>
          <div class="row">
-            <div class="col-md-4 col-lg-4 col-sm-6 col-12">
-               <div class="product-box4">
-                  <div class="product-image4">
-                     <img src="{{URL::to('/public/website')}}/images/product-1.jpg">
-                  </div>
-                  <div class="product-title4">
-                     <h4> Rexel Auto Plus 130X Cross Cut Shredder </h4>
-                     <p> Suitable for professional use, this Rexel Auto </p>
-                  </div>
-                  <div class="product-btn2">
-                     <a href=""> Buy Now </a>
-                  </div>
-                  <div class="product-tag4">
-                     SPECIAL OFFER
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-6 col-12">
-               <div class="product-box4">
-                  <div class="product-image4">
-                     <img src="{{URL::to('/public/website')}}/images/product-2.jpg">
-                  </div>
-                  <div class="product-title4">
-                     <h4> Sirius Medium Back Operators Chair </h4>
-                     <p> Connections Medium Back Operators Chair  </p>
-                  </div>
-                  <div class="product-btn2">
-                     <a href=""> Buy Now </a>
-                  </div>
-                  <div class="product-tag4">
-                     SPECIAL OFFER
+            @foreach($products as $key => $val)
+               <div class="col-md-4 col-lg-4 col-sm-6 col-12">
+                  <div class="product-box4">
+                     <div class="product-image4">
+                        <img src="{{URL::to('/public/storage/product/'.$val->image)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';">
+                     </div>
+                     <div class="product-title4">
+                        <h4> {{$val->title}}<br><small>{{@$val->category->name}}</small></h4>
+                        <p class="cut-text"> {{$val->description}} </p>
+                     </div>
+                     <div class="product-btn2">
+                        <a href="{{$val->product_url}}" target="_blank"> Buy Now </a>
+                     </div>
+                     <div class="product-tag4">
+                        SPECIAL OFFER
+                     </div>
                   </div>
                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-6 col-12">
-               <div class="product-box4">
-                  <div class="product-image4">
-                     <img src="{{URL::to('/public/website')}}/images/product-3.jpg">
-                  </div>
-                  <div class="product-title4">
-                     <h4> Q Connect QuickNote Repositionable Pad </h4>
-                     <p> Q Connect Quick Notes Repositionable notes in.. </p>
-                  </div>
-                  <div class="product-btn2">
-                     <a href=""> Buy Now </a>
-                  </div>
-                  <div class="product-tag4">
-                     SPECIAL OFFER
-                  </div>
+            @endforeach
+            @if(count($products) == '0')
+               <div class="col-md-12">
+                  <h4>No Products Available.</h4>
                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-6 col-12">
-               <div class="product-box4">
-                  <div class="product-image4">
-                     <img src="{{URL::to('/public/website')}}/images/product-1.jpg">
-                  </div>
-                  <div class="product-title4">
-                     <h4> Rexel Auto Plus 130X Cross Cut Shredder </h4>
-                     <p> Suitable for professional use, this Rexel Auto </p>
-                  </div>
-                  <div class="product-btn2">
-                     <a href=""> Buy Now </a>
-                  </div>
-                  <div class="product-tag4">
-                     SPECIAL OFFER
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-6 col-12">
-               <div class="product-box4">
-                  <div class="product-image4">
-                     <img src="{{URL::to('/public/website')}}/images/product-2.jpg">
-                  </div>
-                  <div class="product-title4">
-                     <h4> Sirius Medium Back Operators Chair </h4>
-                     <p> Connections Medium Back Operators Chair  </p>
-                  </div>
-                  <div class="product-btn2">
-                     <a href=""> Buy Now </a>
-                  </div>
-                  <div class="product-tag4">
-                     SPECIAL OFFER
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-6 col-12">
-               <div class="product-box4">
-                  <div class="product-image4">
-                     <img src="{{URL::to('/public/website')}}/images/product-3.jpg">
-                  </div>
-                  <div class="product-title4">
-                     <h4> Q Connect QuickNote Repositionable Pad </h4>
-                     <p> Q Connect Quick Notes Repositionable notes in.. </p>
-                  </div>
-                  <div class="product-btn2">
-                     <a href=""> Buy Now </a>
-                  </div>
-                  <div class="product-tag4">
-                     SPECIAL OFFER
-                  </div>
-               </div>
-            </div>
+            @endif
          </div>
       </div>
    </section>

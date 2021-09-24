@@ -6,58 +6,52 @@
     <div class="card-group">
         <div class="card">
           <div class="card-body">
-                                <h3 class="card-title">Users > All</h3>
-                                <div class="table-responsive m-t-20">
-                                    <table id="myTable" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>S.NO</th>
-                                                <th>IMAGE</th>
-                                                <th>USER NAME</th>
-                                                <th>EMAIL</th>
-                                                <th>COUNTRY</th>
-                                                <th>REG AT</th>
-                                                <th>MEMBERSHIP STATUS</th>
-                                                <th>ACTION</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>Anas</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>2020-02-20</td>
-                                                <td>
-                                                    <div class="switch">
-                                                        <label>OFF<input type="checkbox" checked><span class="lever"></span>ON</label>
-                                                    </div>
-                                                </td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>                  
-                                                </td>                                                
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>Anas</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>2020-02-20</td>
-                                                <td>
-                                                    <div class="switch">
-                                                        <label>OFF<input type="checkbox" checked><span class="lever"></span>ON</label>
-                                                    </div>
-                                                </td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>                  
-                                                </td>                                                
-                                            </tr>                                            
-                                        </tbody>
-                                    </table>
-                                </div>
+                <h3 class="card-title">Users > All</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        @if(session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
                             </div>
+                        @endif
+                        @if(session()->has('error'))
+                            <div class="alert alert-danger">
+                                {{ session()->get('error') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="table-responsive m-t-20">
+                    <table id="myTable" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>S.NO</th>
+                                <th>IMAGE</th>
+                                <th>USER NAME</th>
+                                <th>EMAIL</th>
+                                <th>COUNTRY</th>
+                                <th>REG AT</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $key => $val)
+                                <tr>
+                                    <td>{{++$key}}</td>
+                                    <td><img src="{{URL::to('/public/storage/user/profile/'.$val->image)}}" width="50px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>
+                                    <td>{{$val->name}}</td>
+                                    <td>{{$val->email}}</td>
+                                    <td>{{@$val->country->country}}</td>
+                                    <td>{{date('d-M-Y h:i A', strtotime($val->created_at))}}</td>
+                                    <td class="p-l-0 p-r-0 action">
+                                        <a href="javascript:void(0)" class="btn btn-success gold-b rejectUser" data-id="{{base64_encode($val->id)}}"><i class="fa fa-ban"></i></a>                  
+                                    </td>                                                
+                                </tr>
+                            @endforeach                                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!-- Column -->
     </div>

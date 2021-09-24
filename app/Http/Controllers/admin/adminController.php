@@ -50,38 +50,13 @@ class adminController extends Controller
 
       return redirect()->back()->with('success', 'Vendor Status Updated.');
     }
-    function usersAll(){
 
-    	return view('admin.users.all_users');
-    }
-    function usersBlocked(){
-
-    	return view('admin.users.blocked_users');
-    }
-    function usersPremium(){
-
-    	return view('admin.users.premium_users');
-    }
+    
     function settingRole(){
 
     	return view('admin.setting.admin_role');
     }
-    function productPending(){
-
-    	return view('admin.featured_product.pending_product');
-    }
-    function productPublish(){
-
-    	return view('admin.featured_product.publish_product');
-    }
-    function productExpired(){
-
-    	return view('admin.featured_product.expired_product');
-    }
-    function productBlocked(){
-
-    	return view('admin.featured_product.blocked_product');
-    }
+    
     function memberPending(){
 
     	return view('admin.featured_member.pending_member');

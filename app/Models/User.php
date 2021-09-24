@@ -40,6 +40,18 @@ class User extends Authenticatable
         $u->save();
     }
 
+    public static function becomeVendor(array $data){
+        $u = User::find(Auth::id());
+        $u->name = $data['name'];
+        $u->business_name = $data['business_name'];
+        $u->phone = $data['phone'];
+        $u->address = $data['address'];
+        $u->website_link = $data['website_link'];
+        $u->description = $data['description'];
+        $u->vendor_status = '1';
+        $u->save();
+    }
+
     public static function updateLogo($filename){
         $u = User::find(Auth::id());
         $u->logo = $filename;

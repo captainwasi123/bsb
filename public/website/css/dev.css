@@ -1,3 +1,15 @@
 .authLinks a {
     font-weight: 600;
 }
+
+.cut-text { 
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 230px; 
+  height: 1.2em; 
+  white-space: nowrap;
+}
+
+.category-products h4 {
+    color: #fff;
+}

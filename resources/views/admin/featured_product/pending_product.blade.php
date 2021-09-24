@@ -6,57 +6,56 @@
     <div class="card-group">
         <div class="card">
           <div class="card-body">
-                                <h3 class="card-title">Products > Pending</h3>
-                                <div class="table-responsive m-t-20">
-                                    <table id="myTable" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>S.NO</th>
-                                                <th>IMAGE</th>
-                                                <th>NAME</th>
-                                                <th>PRICE</th>
-                                                <th>CATAGORY</th>
-                                                <th>LINK</th>
-                                                <th>FEATURING MONTH</th>
-                                                <th>STATUS</th>
-                                                <th>ACTION</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>ANAS</td>
-                                                <td>1400</td>
-                                                <td>KUCH BHI</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>2020-2020-20</td>  
-                                                <td>ACTIVE</td>                              
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>ANAS</td>
-                                                <td>1400</td>
-                                                <td>KUCH BHI</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>2020-2020-20</td>  
-                                                <td>ACTIVE</td>                              
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>                                            
-                                        </tbody>
-                                    </table>
-                                </div>
+                <h3 class="card-title">Products > Pending</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        @if(session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
                             </div>
+                        @endif
+                        @if(session()->has('error'))
+                            <div class="alert alert-danger">
+                                {{ session()->get('error') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="table-responsive m-t-20">
+                    <table id="myTable" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>IMAGE</th>
+                                <th>NAME</th>
+                                <th>PRICE</th>
+                                <th>CATAGORY</th>
+                                <th>LINK</th>
+                                <th>CREATED AT</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($products as $key => $val)
+                                <tr>
+                                    <td>{{++$key}}</td>
+                                    <td><img src="{{URL::to('/public/storage/product/'.$val->image)}}" width="50px"  onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"></td>
+                                    <td>{{$val->title}}</td>
+                                    <td>${{number_format($val->price, 1)}}</td>
+                                    <td>{{@$val->category->name}}</td>
+                                    <td><a href="{{$val->product_url}}" target="_blank"><i class="fa fa-link"></i> Link</a></td>
+                                    <td>{{date('d-M-Y h:i A', strtotime($val->created_at))}}</td>                              
+                                    <td class="p-l-0 p-r-0 action">
+                                        <a href="javascript:void(0)" class="btn btn-success gold-b publishProduct" data-id="{{base64_encode($val->id)}}" title="Publish"><i class="fa fa-globe"></i></a>
+
+                                        <a href="javascript:void(0)" class="btn btn-danger rejectProduct" data-id="{{base64_encode($val->id)}}" title="Reject"><i class="fa fa-close"></i></a>
+                                    </td>                                                
+                                </tr>
+                            @endforeach                                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!-- Column -->
     </div>
@@ -67,53 +66,6 @@
     <script>
     $(document).ready(function() {
         $('#myTable').DataTable();
-        $(document).ready(function() {
-            var table = $('#example').DataTable({
-                "columnDefs": [{
-                    "visible": false,
-                    "targets": 2
-                }],
-                "order": [
-                    [2, 'asc']
-                ],
-                "displayLength": 25,
-                "drawCallback": function(settings) {
-                    var api = this.api();
-                    var rows = api.rows({
-                        page: 'current'
-                    }).nodes();
-                    var last = null;
-                    api.column(2, {
-                        page: 'current'
-                    }).data().each(function(group, i) {
-                        if (last !== group) {
-                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                            last = group;
-                        }
-                    });
-                }
-            });
-            // Order by the grouping
-            $('#example tbody').on('click', 'tr.group', function() {
-                var currentOrder = table.order()[0];
-                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                    table.order([2, 'desc']).draw();
-                } else {
-                    table.order([2, 'asc']).draw();
-                }
-            });
-        });
-    });
-    $('#example23').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-    </script>
-      <script>
-    $(document).ready(function() {
-        $(".dataTables_filter").removeAttr("top");
     });
     </script>
 @endsection

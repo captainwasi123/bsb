@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\products\categories;
+use App\Models\products\product;
 use Auth;
 
 class webController extends Controller
@@ -29,9 +30,10 @@ class webController extends Controller
     }
     function category($id, $name){
         $id = base64_decode($id);
-        $data = categories::find($id);
+        $data['category'] = categories::find($id);
+        $data['products'] = product::where('category_id', $id)->where('status', '1')->latest()->limit(6)->get();
 
-        return view('web.category', ['data' => $data]);
+        return view('web.category')->with($data);
 
     }
 

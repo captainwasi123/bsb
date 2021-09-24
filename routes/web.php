@@ -48,6 +48,8 @@ use Illuminate\Support\Facades\Route;
         Route::get('/setting/profile', 'userController@settingProfile')->name('user.setting.settingProfile');
         Route::get('/setting/password', 'userController@settingPassword')->name('user.setting.settingPassword');
 
+        Route::post('become_a_vendor', 'userController@becomeVendor')->name('user.become_a_vendor');
+
     });
 
 //User Dashboard
@@ -91,33 +93,49 @@ use Illuminate\Support\Facades\Route;
 //Admin Dashboard
     Route::prefix('admin')->namespace('admin')->group(function(){
 
-        Route::get('/', 'adminController@index')->name('admin.dashboard')->name('admin.index');
+        Route::get('/login', 'authController@login')->name('admin.login');
+        Route::post('/login', 'authController@loginSubmit');
+        Route::get('/logout', 'authController@logout')->name('admin.logout');
 
-        Route::get('/vendor/new', 'adminController@vendorNew')->name('admin.vendor.vendorNew');
-        Route::get('/vendor/featured', 'adminController@vendorFeatured')->name('admin.vendor.vendorFeatured');
-        Route::get('/vendor/active', 'adminController@vendorActive')->name('admin.vendor.vendorActive');
-        Route::get('/vendor/blocked', 'adminController@vendorBlocked')->name('admin.vendor.vendorBlocked');
+        Route::middleware('adminAuth')->group(function(){
+            
+            Route::prefix('vendor')->group(function(){
+                Route::get('/', 'adminController@index')->name('admin.index');
+                Route::get('new', 'adminController@vendorNew')->name('admin.vendor.vendorNew');
+                Route::get('featured', 'adminController@vendorFeatured')->name('admin.vendor.vendorFeatured');
+                Route::get('active', 'adminController@vendorActive')->name('admin.vendor.vendorActive');
+                Route::get('blocked', 'adminController@vendorBlocked')->name('admin.vendor.vendorBlocked');
 
-        Route::get('/vendor/changeStatus/{id}/{status}', 'adminController@changeStatus')->name('admin.vendor.changeStatus');
+                Route::get('changeStatus/{id}/{status}', 'adminController@changeStatus')->name('admin.vendor.changeStatus');
+            });
 
+            Route::prefix('users')->group(function(){
 
-        Route::get('/users/all', 'adminController@usersAll')->name('admin.users.usersAll');
-        Route::get('/users/blocked', 'adminController@usersBlocked')->name('admin.users.usersBlocked');
-        Route::get('/users/premium', 'adminController@usersPremium')->name('admin.users.usersPremium');
+                Route::get('all', 'userController@usersAll')->name('admin.users.usersAll');
+                Route::get('blocked', 'userController@usersBlocked')->name('admin.users.usersBlocked');
+                Route::get('premium', 'userController@usersPremium')->name('admin.users.usersPremium');
 
-        Route::get('/setting/role', 'adminController@settingRole')->name('admin.setting.settingRole');
+                Route::get('changeStatus/{id}/{status}', 'userController@changeStatus')->name('admin.users.changeStatus');
+            });
 
-        Route::get('/product/pending', 'adminController@productPending')->name('admin.featured_product.productPending');
-        Route::get('/product/publish', 'adminController@productPublish')->name('admin.featured_product.productPublish');
-        Route::get('/product/expired', 'adminController@productExpired')->name('admin.featured_product.productExpired');
-        Route::get('/product/blocked', 'adminController@productBlocked')->name('admin.featured_product.productBlocked');
+            Route::prefix('product')->group(function(){
 
-        Route::get('/member/pending', 'adminController@memberPending')->name('admin.featured_member.memberPending');
-        Route::get('/member/publish', 'adminController@memberPublish')->name('admin.featured_member.memberPublish');
-        Route::get('/member/expired', 'adminController@memberExpired')->name('admin.featured_member.memberExpired');
-        Route::get('/member/blocked', 'adminController@memberBlocked')->name('admin.featured_member.memberBlocked');
-        Route::get('/member/cancel', 'adminController@memberCancel')->name('admin.featured_member.memberCancel');
+                Route::get('pending', 'productController@productPending')->name('admin.featured_product.productPending');
+                Route::get('publish', 'productController@productPublish')->name('admin.featured_product.productPublish');
+                Route::get('expired', 'productController@productExpired')->name('admin.featured_product.productExpired');
+                Route::get('blocked', 'productController@productBlocked')->name('admin.featured_product.productBlocked');
 
+                Route::get('changeStatus/{id}/{status}', 'productController@changeStatus')->name('admin.users.changeStatus');
+            });
+
+            Route::get('/setting/role', 'adminController@settingRole')->name('admin.setting.settingRole');
+
+            Route::get('/member/pending', 'adminController@memberPending')->name('admin.featured_member.memberPending');
+            Route::get('/member/publish', 'adminController@memberPublish')->name('admin.featured_member.memberPublish');
+            Route::get('/member/expired', 'adminController@memberExpired')->name('admin.featured_member.memberExpired');
+            Route::get('/member/blocked', 'adminController@memberBlocked')->name('admin.featured_member.memberBlocked');
+            Route::get('/member/cancel', 'adminController@memberCancel')->name('admin.featured_member.memberCancel');
+        });
 
     });
 

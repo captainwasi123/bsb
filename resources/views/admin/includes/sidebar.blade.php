@@ -10,7 +10,7 @@
             </div>
             <!-- User profile text-->
             <div class="profile-text">
-                <h5>{{Auth::user()->name}}</h5>
+                <h5>{{Auth::guard('admin')->user()->fullname}}</h5>
             </div>
         </div>
         <!-- End User profile text-->
