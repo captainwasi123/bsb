@@ -16,11 +16,13 @@ class vendorController extends Controller
 
     	return view('vendor.index');
     }
+    
     function basicInfo(){
         $data['countries'] = countries::all();
 
     	return view('vendor.profile.basic_info')->with($data);
     }
+
     function basicInfoSubmit(Request $request){
         $data = $request->all();
 

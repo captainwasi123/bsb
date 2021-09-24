@@ -98,6 +98,9 @@ use Illuminate\Support\Facades\Route;
         Route::get('/vendor/active', 'adminController@vendorActive')->name('admin.vendor.vendorActive');
         Route::get('/vendor/blocked', 'adminController@vendorBlocked')->name('admin.vendor.vendorBlocked');
 
+        Route::get('/vendor/changeStatus/{id}/{status}', 'adminController@changeStatus')->name('admin.vendor.changeStatus');
+
+
         Route::get('/users/all', 'adminController@usersAll')->name('admin.users.usersAll');
         Route::get('/users/blocked', 'adminController@usersBlocked')->name('admin.users.usersBlocked');
         Route::get('/users/premium', 'adminController@usersPremium')->name('admin.users.usersPremium');
@@ -114,6 +117,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/member/expired', 'adminController@memberExpired')->name('admin.featured_member.memberExpired');
         Route::get('/member/blocked', 'adminController@memberBlocked')->name('admin.featured_member.memberBlocked');
         Route::get('/member/cancel', 'adminController@memberCancel')->name('admin.featured_member.memberCancel');
+
 
     });
 

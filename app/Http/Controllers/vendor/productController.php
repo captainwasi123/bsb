@@ -41,17 +41,26 @@ class productController extends Controller
         return view('vendor.product.all_product', ['data' => $data]);
     }
     function pendingProduct(){
-        $data = product::where('seller_id', Auth::id())->latest()->get();
-
+        $data = product::where('seller_id', Auth::id())
+        ->Where('status', 0)->get();
+       
         return view('vendor.product.pending_product', ['data' => $data]);
     }
     function approveProduct(){
-
-        return view('vendor.product.approve_product');
+       
+       
+        $data = product::where('seller_id', Auth::id())
+        ->Where('status', 1)->get();
+    
+        return view('vendor.product.approve_product', ['data' => $data]);
     }
     function rejectProduct(){
 
-        return view('vendor.product.reject_product');
+        $data = product::where('seller_id', Auth::id())
+        ->Where('status', 2)->get();
+       
+
+        return view('vendor.product.reject_product', ['data' => $data]);
     }
 
 

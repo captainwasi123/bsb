@@ -1,12 +1,27 @@
 @extends('admin.includes.master')
 @section('title', 'New Vendors')
 @section('content')
-       
+
 <!-- Row -->
     <div class="card-group">
         <div class="card">
           <div class="card-body">
                                 <h3 class="card-title">Vendors > New</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @if(session()->has('success'))
+                                            <div class="alert alert-success">
+                                                {{ session()->get('success') }}
+                                            </div>
+                                        @endif
+                                        @if(session()->has('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session()->get('error') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="table-responsive m-t-20">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
@@ -16,6 +31,7 @@
                                                 <th>ID</th>
                                                 <th>CLIENT NAME</th>
                                                 <th>BUSINESS NAME</th>
+                                                <th>PHONE NUMBER</th>
                                                 <th>EMAIL</th>
                                                 <th>COUNTRY</th>
                                                 <th>WEBSITE LINK</th>
@@ -24,36 +40,45 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>DIVSNPIXEL</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>LOREN IPSUM, LOREN IPSUM</td>                                
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>DIVSNPIXEL</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>LOREN IPSUM, LOREN IPSUM</td>                                
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>                                            
+                                          {{-- sa --}}
+                                          @foreach($data as $key => $val)
+                                          <tr>
+                                              <td>{{++$key}}</td>
+                                              <td><img src="{{URL::to('/public/storage/product/'.$val->logo)}}" width="60px"></td>
+                                              <td>{{$val->id}}</td>
+                                              <td>{{$val->name}}</td>
+                                              <td>{{$val->business_name}}</td>
+                                              <td>{{$val->phone}}</td>
+                                              <td>{{$val->email}}</td>
+                                              <td>{{@$val->country->country}}</td>
+                                              <td>{{$val->website_link}}</td>
+                                              <td>{{$val->description}}</td>
+
+                                        {{--
+
+                                              <td>
+                                                  @switch($val->status)
+
+                                                      @case('0')
+                                                          <label class="label label-info">Pending</label>
+                                                          @break
+
+                                                      @case('1')
+                                                          <label class="label label-success">Approved</label>
+                                                          @break
+
+                                                      @case('2')
+                                                          <label class="label label-danger">Rejected</label>
+                                                          @break
+
+                                                  @endswitch
+                                              </td> --}}
+                                              <td class="p-l-0 p-r-0 action">
+                                                  <a href="{{route('vendor.product.edit', base64_encode($val->id))}}" class="btn btn-success gold-b"><i class="fa fa-check-circle"></i> </a>
+                                                  <a href="javascript:void(0)" class="btn btn-success gold-b deleteProduct" data-id="{{base64_encode($val->id)}}"><i class="fa fa-ban"></i></a>
+                                              </td>
+                                          </tr>
+                                      @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -117,4 +142,6 @@
         $(".dataTables_filter").removeAttr("top");
     });
     </script>
+
+
 @endsection

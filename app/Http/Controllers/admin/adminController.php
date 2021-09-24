@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Auth;
 
 class adminController extends Controller
 {
@@ -12,21 +14,41 @@ class adminController extends Controller
 
     	return view('admin.index');
     }
+
     function vendorNew(){
 
-    	return view('admin.vendor.new_request');
-    }
+      $data = User::where('id', Auth::id())->where('vendor_status',1)->get();
+
+    return view('admin.vendor.new_request', ['data' => $data]);
+     }
+    
     function vendorFeatured(){
 
     	return view('admin.vendor.featured_vendors');
     }
+
     function vendorActive(){
 
-    	return view('admin.vendor.active_vendors');
+      $data = User::where('id', Auth::id())->where('vendor_status',2)->get();
+
+    	return view('admin.vendor.active_vendors', ['data' => $data]);
     }
+
     function vendorBlocked(){
 
-    	return view('admin.vendor.blocked_vendors');
+      $data = User::where('id', Auth::id())->where('vendor_status',3)->get();
+
+
+    	return view('admin.vendor.blocked_vendors',['data' => $data]);
+    }
+
+    function changeStatus($id, $status){
+
+      $user=User::find(base64_decode($id));
+      $user->vendor_status = $status;
+      $user->save();
+
+      return redirect()->back()->with('success', 'Vendor Status Updated.');
     }
     function usersAll(){
 

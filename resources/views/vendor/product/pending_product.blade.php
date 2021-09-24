@@ -38,7 +38,7 @@
                         <tbody>
                             @foreach($data as $key => $val)
                                 <tr>
-                                    <td>{{++$key}}</td>
+                                     <td>{{++$key}}</td>
                                     <td><img src="{{URL::to('/public/storage/product/'.$val->image)}}" width="60px"></td>
                                     <td>{{$val->title}}</td>
                                     <td>${{number_format($val->price, 1)}}</td>

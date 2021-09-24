@@ -12,7 +12,7 @@
             <div class="profile-text">
                 <h5>{{Auth::user()->name}}</h5>
                 @if(Auth::user()->vendor_status == '0')
-                    <a href="" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
+                    <a href="" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;" data-toggle="modal" data-target="#becomeVenderModal">
                         Become a Vendor
                     </a>
                 @elseif(Auth::user()->vendor_status == '1')

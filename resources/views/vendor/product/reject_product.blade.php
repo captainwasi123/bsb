@@ -6,7 +6,21 @@
     <div class="card-group">
         <div class="card">
           <div class="card-body">
-                                <h3 class="card-title">Products > Reject</h3>
+                                <h3 class="card-title">Products > Reject</h3> 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @if(session()->has('success'))
+                                            <div class="alert alert-success">
+                                                {{ session()->get('success') }}
+                                            </div>
+                                        @endif
+                                        @if(session()->has('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session()->get('error') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
@@ -19,42 +33,45 @@
                                                 <th>CATAGORY</th>
                                                 <th>LINK</th>
                                                 <th>FEATURED</th>
+                                                <th>STATUS</th>
                                                 <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+
+                                            @foreach($data as $key => $val)
                                             <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>$110</td>
-                                                <td>Plastic</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>                                                    
-                                                    <label>OFF</label>                                                   
-                                                </td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>$110</td>
-                                                <td>Plastic</td>
-                                                <td>https://divsnpixel.com/</td>
+                                                 <td>{{++$key}}</td>
+                                                <td><img src="{{URL::to('/public/storage/product/'.$val->image)}}" width="60px"></td>
+                                               <td>{{ $val->id }}</td>
+                                                <td>{{$val->title}}</td>
+                                                <td>${{number_format($val->price, 1)}}</td>
+                                                <td>{{@$val->category->name}}</td>
+                                                <td><a href="{{$val->product_url}}" target="_blank"><span class="fa fa-link"></span>&nbsp;Link</a></td>
+                                               <td></td>
                                                 <td>
-                                                    <label>ON</label>  
+                                                    @switch($val->status)
+                                            
+                                                        @case('0')
+                                                            <label class="label label-info">Pending</label>
+                                                            @break
+                                            
+                                                        @case('1')
+                                                            <label class="label label-success">Approved</label>
+                                                            @break
+                                            
+                                                        @case('2')
+                                                            <label class="label label-danger">Rejected</label>
+                                                            @break
+                                                            
+                                                    @endswitch
                                                 </td>
                                                 <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
+                                                    <a href="{{route('vendor.product.edit', base64_encode($val->id))}}" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </a>
+                                                    <a href="javascript:void(0)" class="btn btn-success gold-b deleteProduct" data-id="{{base64_encode($val->id)}}"><i class="fa fa-trash"></i></a>
+                                                </td>
                                             </tr>
+                                            @endforeach
                                             
                                         </tbody>
                                     </table>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Auth;
+use App\Models\countries;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,11 @@ class User extends Authenticatable
         $u->save();
     }
 
+
+    public function country(){
+        
+        return $this->belongsTo(countries::class, 'country_id');
+    }
     /**
      * The attributes that are mass assignable.
      *
