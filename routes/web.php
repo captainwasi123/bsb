@@ -99,8 +99,8 @@ use Illuminate\Support\Facades\Route;
 
         Route::middleware('adminAuth')->group(function(){
             
+            Route::get('/', 'adminController@index')->name('admin.index');
             Route::prefix('vendor')->group(function(){
-                Route::get('/', 'adminController@index')->name('admin.index');
                 Route::get('new', 'adminController@vendorNew')->name('admin.vendor.vendorNew');
                 Route::get('featured', 'adminController@vendorFeatured')->name('admin.vendor.vendorFeatured');
                 Route::get('active', 'adminController@vendorActive')->name('admin.vendor.vendorActive');
