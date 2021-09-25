@@ -10,6 +10,9 @@
 <link href="{{URL::to('/public/website')}}/css/custom.css" rel="stylesheet">
 <link href="{{URL::to('/public/website')}}/css/dev.css" rel="stylesheet">
 <!-- Font Awesome Icons -->
-<link href="{{URL::to('/public/website')}}/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <!-- Jquery Library -->
 <script type="text/javascript" src="{{URL::to('/public/website')}}/js/jquery-3.2.1.min.js"></script>

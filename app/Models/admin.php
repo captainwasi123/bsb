@@ -15,7 +15,8 @@ class admin extends Authenticatable
 
     protected $table = 'tbl_admin_users_info';
 
-    
+
+
     /**
      * The attributes that are mass assignable.
      *

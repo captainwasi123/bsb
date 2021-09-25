@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\products\categories;
 use App\Models\products\product;
+use App\Models\favourite_prod_user as fav;
 use Auth;
 
 class webController extends Controller
@@ -18,6 +19,25 @@ class webController extends Controller
         );
         return view('web.index')->with($data);
     }
+
+    function favprod($id){
+        $id = base64_decode($id);
+        $da = fav::where(['user_id' => Auth::id(), 'product_id' => $id])->first();
+        if(empty($da->id)){
+            $f = new fav;
+            $f->user_id = Auth::id();
+            $f->product_id = $id;
+            $f->save();
+
+            return '1';
+        }else{
+            fav::destroy($da->id);
+
+            return '0';
+        }
+    }
+
+    
 
     function about(){
 

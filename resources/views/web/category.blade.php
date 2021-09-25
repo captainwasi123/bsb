@@ -84,7 +84,16 @@
                         <p class="cut-text"> {{$val->description}} </p>
                      </div>
                      <div class="product-btn2">
-                        <a href="{{$val->product_url}}" target="_blank"> Buy Now </a>
+                           <a href="{{$val->product_url}}" target="_blank"> Buy Now </a>
+                        @if(Auth::check())
+                           <a href="javascript:void(0)" class="btn btn-success gold-b favproduct"  data-id="{{base64_encode($val->id)}}">
+                              @if(empty($val->favprod->id))
+                              <i class="material-icons md-18"> favorite_border </i>  
+                              @else
+                             <i class="material-icons md-18"> favorite</i>
+                              @endif
+                           </a>
+                        @endif 
                      </div>
                      <div class="product-tag4">
                         SPECIAL OFFER

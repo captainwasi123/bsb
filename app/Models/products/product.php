@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\products\categories;
+use App\Models\favourite_prod_user as fav;
 use Auth;
 
 class product extends Model
@@ -47,5 +48,10 @@ class product extends Model
     }
     public function category(){
         return $this->belongsTo(categories::class, 'category_id');
+    }
+
+    public function favprod()
+    {
+        return $this->belongsTo(fav::class, 'id', 'product_id')->where('user_id', Auth::id() );
     }
 }

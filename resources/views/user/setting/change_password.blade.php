@@ -6,30 +6,52 @@
 @section('content')
         <div class="card card-outline-info">
                             <div class="card-body">
-                                <form action="#">
+                                <form method="post">
+                                    @csrf
                                     <div class="form-body">
                                         <h3 class="card-title">Setting > Password</h3>
                                         <hr>
                                         <div class="row p-t-20">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
+                                                @if(session()->has('success'))
+                                                    <div class="alert alert-success">
+                                                        {{ session()->get('success') }}
+                                                    </div>
+                                                @endif
+                                                @if(session()->has('error'))
+                                                    <div class="alert alert-danger">
+                                                        {{ session()->get('error') }}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Current Password</label>
-                                                    <input type="password" id="lastName" class="form-control form-control-danger" placeholder="Current Password">
+                                                    <label>Current Password</label>
+                                                    <input type="Password" class="form-control" name="old_password" required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">New Password</label>
-                                                    <input type="password" id="lastName" class="form-control form-control-danger" placeholder="New Password">
+                                                    <label>New Password</label>
+                                                    <input type="Password" class="form-control" name="password" required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                        </div>
+                                        <div class="row">
+                                            <!--/span-->
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Confirm Password</label>
-                                                    <input type="password" id="lastName" class="form-control form-control-danger" placeholder="Confirm Password">
+                                                    <label>Confirm Password</label>
+                                                    <input type="Password" class="form-control" name="password_confirmation" required>
                                                 </div>
                                             </div>
-                                        </div>                            
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
                                     </div>
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-success gold-b"> Update</button>

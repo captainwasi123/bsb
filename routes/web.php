@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('about', 'webController@about')->name('web.about');
         Route::get('categories', 'webController@categories')->name('web.categories');
         Route::get('category/{id}/{name}', 'webController@category')->name('web.category');
+        Route::get('/product/fav/{id}', 'webController@favprod');
         Route::get('physicalBox', 'webController@physicalBox')->name('web.physical_box');
 
 
@@ -43,11 +44,13 @@ use Illuminate\Support\Facades\Route;
         Route::get('/membership/status', 'userController@memberStatus')->name('user.membership.memberStatus');
 
         Route::get('/whishlist/product', 'userController@whishlistProduct')->name('user.whishlist.whishlistProduct');
+        Route::get('delete/{id}', 'userController@deleteWishlistProduct');
+
         Route::get('/whishlist/vendors', 'userController@whishlistVendors')->name('user.whishlist.whishlistVendors');
 
         Route::get('/setting/profile', 'userController@settingProfile')->name('user.setting.settingProfile');
         Route::get('/setting/password', 'userController@settingPassword')->name('user.setting.settingPassword');
-
+        Route::post('/setting/password', 'userController@settingPasswordSubmit');
         Route::post('become_a_vendor', 'userController@becomeVendor')->name('user.become_a_vendor');
 
     });
@@ -60,7 +63,7 @@ use Illuminate\Support\Facades\Route;
 
         //Profile
             Route::prefix('profile')->group(function(){
-                
+
                 Route::get('basicInformation', 'vendorController@basicInfo')->name('vendor.profile.basicInfo');
                 Route::post('basicInformation', 'vendorController@basicInfoSubmit');
 
@@ -98,7 +101,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/logout', 'authController@logout')->name('admin.logout');
 
         Route::middleware('adminAuth')->group(function(){
-            
+
             Route::get('/', 'adminController@index')->name('admin.index');
             Route::prefix('vendor')->group(function(){
                 Route::get('new', 'adminController@vendorNew')->name('admin.vendor.vendorNew');

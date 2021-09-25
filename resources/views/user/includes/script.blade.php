@@ -13,6 +13,9 @@
 <!--Custom JavaScript -->
 <script src="{{URL::to('/public/admin')}}/js/custom.min.js"></script>
 <script src="{{URL::to('/public/admin')}}/js/dashboard1.js"></script>
+<script src="{{URL::to('/public/admin')}}/js/prodWishList.js"></script>
+
+
 
 
  <script src="{{URL::to('/public/admin')}}/plugins/sparkline/jquery.sparkline.min.js"></script>

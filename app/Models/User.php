@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Auth;
 use App\Models\countries;
+use App\Models\favourite_prod_user as fav;
 
 class User extends Authenticatable
 {
@@ -62,6 +63,11 @@ class User extends Authenticatable
     public function country(){
         
         return $this->belongsTo(countries::class, 'country_id');
+    }
+
+    public function favuser(){
+
+        return $this->hasMany(fav::class, 'user_id' ,'id');
     }
     /**
      * The attributes that are mass assignable.

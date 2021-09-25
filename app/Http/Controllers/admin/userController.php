@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
+use App\Models\favourite_prod_user as Fav;
 
 class userController extends Controller
 {
@@ -32,4 +34,6 @@ class userController extends Controller
 
       return redirect()->back()->with('success', 'User Status Updated.');
     }
+
+
 }

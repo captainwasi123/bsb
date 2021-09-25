@@ -7,38 +7,50 @@
         <div class="card">
           <div class="card-body">
                                 <h3 class="card-title">Whishlist > Products</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @if(session()->has('success'))
+                                            <div class="alert alert-success">
+                                                {{ session()->get('success') }}
+                                            </div>
+                                        @endif
+                                        @if(session()->has('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session()->get('error') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>S.NO</th>
-                                                <th>NAME</th>
-                                                <th>CATAGORY</th>
-                                                <th>PRICE</th>                                                
+                                                <th>ID</th>
+                                                <th>PRODUCT</th>
+                                                <th>PRODUCT IMAGE</th>
+                                                <th>USER</th>
                                                 <th>ACTION</th>
+
+
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($data as $key => $val)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>Plastic</td>
-                                                <td>$110</td>
+                                                 <td>{{++$key}}</td>
+                                               <td>{{ $val->id }}</td>
+                                                <td>{{@$val->product->title}}</td>
+                                                <td><img src="{{@URL::to('/public/storage/product/'.$val->product->image)}}" width="60px"></td>
+
+                                                <td>{{@$val->user->name}}</td>
+
                                                 <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
+
+                                                    <a href="javascript:void(0)" class="btn btn-success gold-b deleteWishlistProduct" data-id="{{base64_encode($val->id)}}"><i class="fa fa-trash"></i></a>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>Plastic</td>
-                                                <td>$110</td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>                                            
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
