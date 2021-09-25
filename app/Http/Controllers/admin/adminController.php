@@ -17,7 +17,7 @@ class adminController extends Controller
 
     function vendorNew(){
 
-      $data = User::where('id', Auth::id())->where('vendor_status',1)->get();
+      $data = User::where('vendor_status',1)->get();
 
     return view('admin.vendor.new_request', ['data' => $data]);
      }
@@ -29,14 +29,14 @@ class adminController extends Controller
 
     function vendorActive(){
 
-      $data = User::where('id', Auth::id())->where('vendor_status',2)->get();
+      $data = User::where('vendor_status',2)->get();
 
     	return view('admin.vendor.active_vendors', ['data' => $data]);
     }
 
     function vendorBlocked(){
 
-      $data = User::where('id', Auth::id())->where('vendor_status',3)->get();
+      $data = User::where('vendor_status',3)->get();
 
 
     	return view('admin.vendor.blocked_vendors',['data' => $data]);
