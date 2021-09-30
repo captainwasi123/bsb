@@ -41,6 +41,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/', 'userController@index')->name('user.dashboard');
 
         Route::get('/membership/plan', 'userController@memberPlan')->name('user.membership.memberPlan');
+        Route::get('/membership/buyMU/{id}', 'userController@buyMembershipUser');
         Route::get('/membership/status', 'userController@memberStatus')->name('user.membership.memberStatus');
 
         Route::get('/whishlist/product', 'userController@whishlistProduct')->name('user.whishlist.whishlistProduct');
@@ -49,6 +50,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/whishlist/vendors', 'userController@whishlistVendors')->name('user.whishlist.whishlistVendors');
 
         Route::get('/setting/profile', 'userController@settingProfile')->name('user.setting.settingProfile');
+        Route::post('/setting/profile', 'userController@settingProfileSubmit');
         Route::get('/setting/password', 'userController@settingPassword')->name('user.setting.settingPassword');
         Route::post('/setting/password', 'userController@settingPasswordSubmit');
         Route::post('become_a_vendor', 'userController@becomeVendor')->name('user.become_a_vendor');
@@ -103,6 +105,7 @@ use Illuminate\Support\Facades\Route;
         Route::middleware('adminAuth')->group(function(){
 
             Route::get('/', 'adminController@index')->name('admin.index');
+
             Route::prefix('vendor')->group(function(){
                 Route::get('new', 'adminController@vendorNew')->name('admin.vendor.vendorNew');
                 Route::get('featured', 'adminController@vendorFeatured')->name('admin.vendor.vendorFeatured');
@@ -110,6 +113,8 @@ use Illuminate\Support\Facades\Route;
                 Route::get('blocked', 'adminController@vendorBlocked')->name('admin.vendor.vendorBlocked');
 
                 Route::get('changeStatus/{id}/{status}', 'adminController@changeStatus')->name('admin.vendor.changeStatus');
+                Route::get('featureStatus/{id}/{status}', 'adminController@featureStatus')->name('admin.vendor.featureStatus');
+
             });
 
             Route::prefix('users')->group(function(){

@@ -27,8 +27,8 @@
                                                 <td>9299-6695-6</td>
                                                 <td>Active</td>
                                                 <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>                  
-                                                </td>                                                
+                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>1</td>
@@ -37,9 +37,9 @@
                                                 <td>9299-6695-6</td>
                                                 <td>Active</td>
                                                 <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>                  
-                                                </td>                                                
-                                            </tr>                                            
+                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

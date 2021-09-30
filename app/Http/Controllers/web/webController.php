@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers\web;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\products\categories;
+use Illuminate\Http\Request;
 use App\Models\products\product;
+use App\Models\products\categories;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\favourite_prod_user as fav;
-use Auth;
+
 
 class webController extends Controller
 {
     //
     function index(){
-        $data = array(
-            'categories' => categories::all()
-        );
+        $data['categories'] =categories::all();
+        $data['users'] =User::where('is_feature',1)->latest()->limit(6)->get();
+
+
         return view('web.index')->with($data);
     }
 
@@ -37,7 +39,7 @@ class webController extends Controller
         }
     }
 
-    
+
 
     function about(){
 
@@ -52,6 +54,8 @@ class webController extends Controller
         $id = base64_decode($id);
         $data['category'] = categories::find($id);
         $data['products'] = product::where('category_id', $id)->where('status', '1')->latest()->limit(6)->get();
+        $data['users'] =User::where('is_feature',1)->latest()->limit(6)->get();
+
 
         return view('web.category')->with($data);
 

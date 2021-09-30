@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\membership\Membership_user as MU;
+use App\Models\membership\Membership_vendor as MV;
 use Auth;
 
 class adminController extends Controller
@@ -21,11 +23,22 @@ class adminController extends Controller
 
     return view('admin.vendor.new_request', ['data' => $data]);
      }
-    
+
     function vendorFeatured(){
 
-    	return view('admin.vendor.featured_vendors');
+        $data =User::where('is_feature', 1)->where('vendor_status',2)->get();
+
+    	return view('admin.vendor.featured_vendors', ['data' => $data]);
     }
+
+    function featureStatus($id, $status){
+
+        $user=User::find(base64_decode($id));
+        $user->	is_feature = $status;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Vendor Feature Updated.');
+      }
 
     function vendorActive(){
 
@@ -51,13 +64,19 @@ class adminController extends Controller
       return redirect()->back()->with('success', 'Vendor Status Updated.');
     }
 
-    
+
+
+
     function settingRole(){
 
     	return view('admin.setting.admin_role');
     }
-    
+
     function memberPending(){
+
+        $data =array([
+            'vendor' => MU::where('status',)
+        ]);
 
     	return view('admin.featured_member.pending_member');
     }
@@ -77,5 +96,7 @@ class adminController extends Controller
 
     	return view('admin.featured_member.cancel_member');
     }
+
+
 
 }

@@ -5,16 +5,16 @@
 <!-- Banner Section Starts Here -->
   <section class="banner-sec">
      <div class="container">
-       
+
         <div class="row center-row">
            <div class="col-md-6 col-lg-6 col-sm-12 col-12 order-lg-2">
               <div class="banner-image">
-                 <img src="{{URL::to('/public/website')}}/images/gift-box.png">	
+                 <img src="{{URL::to('/public/website')}}/images/gift-box.png">
               </div>
            </div>
            <div class="col-md-6 col-lg-6 col-sm-12 col-12 order-lg-1">
               <div class="banner-text">
-                 <h3 class="col-yellow"> The bsb Collaborative LLC 
+                 <h3 class="col-yellow"> The bsb Collaborative LLC
                  </h3>
                  <p class="col-white"> BSB Collaborative LLC is an online business that provides an engaging virtual space for Beautè Snob Boîte box subscribers with exclusive access to thousands of small and minority-owned entrepreneurs and businesses looking for collaboration and support in today’s retail space </p>
                  <a href="#contact-us-sec" class="custom-btn1"> Register as Vendor </a>
@@ -59,12 +59,12 @@
             @foreach($categories as $val)
                <div class="col-md-4 col-lg-4 col-sm-6 col-12">
                   <div class="cat-box">
-                     <a href="{{route('web.category', [base64_encode($val->id), $val->name])}}"> 
-                        <img src="{{URL::to('/public/website')}}/images/categories/{{$val->id.'.jpg'}}"> 
+                     <a href="{{route('web.category', [base64_encode($val->id), $val->name])}}">
+                        <img src="{{URL::to('/public/website')}}/images/categories/{{$val->id.'.jpg'}}">
                      </a>
                   </div>
                </div>
-            @endforeach   
+            @endforeach
         </div>
      </div>
   </section>
@@ -78,73 +78,34 @@
         <div class="sec-head text-center">
            <h3> Featured Vendors </h3>
         </div>
+
         <div class="feature-slider no-arrows">
+            @foreach ($users as $key =>$val )
            <div>
               <div class="products-box">
                  <div class="product-image">
-                    <img src="{{URL::to('/public/website')}}/images/vendor-1.png">
+                   <center> <img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"> </center>
                  </div>
                  <div class="product-title">
-                    <p> What is Pure Living and Beauty? Pure Living is being the "Authentic You", with inner and outer beauty. Our products are handmade with all natural ingredients that infuses into your skin. Especially blended to focus on self-love and self-care, Pure Living and Beauty products give an exclusive and luxurious experience at first use. Your skin will not only be moisturized but enhance your natural glow!
-                    </p>
+                    <h4> {{$val->name}}</h4>
+                    <span class="cut-text"> {{$val->email}} </span><br>
+                    <span class="cut-text"> {{$val->business_name}} </span><br>
+                    <span class="cut-text">{{@$val->city}} <small>{{@$val->country->country}}</small>  </span><br>
+                    <p class="cut-text"> {{$val->description}} </p>
+
+
+
+
                  </div>
               </div>
            </div>
-           <div>
-              <div class="products-box">
-                 <div class="product-image">
-                    <img src="{{URL::to('/public/website')}}/images/vendor-2.png">
-                 </div>
-                 <div class="product-title">
-                    <p> LaBella Diamond Cosmetics is a dynamic and versatile cosmetics line focused on personal care and beauty. We focus on self-care to develop a skincare routine from our vegan sugar scrubs to our Slick Lip line. Our specially blended formulas are vegan and cruelty-free. LaBella Diamond provides a luxurious journey to healthy, glowing skin for our customers to look and feel their best.
-                    </p>
-                 </div>
-              </div>
-           </div>
-           <div>
-              <div class="products-box">
-                 <div class="product-image">
-                    <img src="{{URL::to('/public/website')}}/images/vendor-3.png">
-                 </div>
-                 <div class="product-title">
-                    <p> Shea Culture & Company is a small family-owned business that focuses on creating natural and organic bath and body products. Our mission is to create effective natural products for my customers and educating them on the importance of natural products and how they can be healing to your body. Our products are made in small batches to ensure the best quality with most of our items being vegan and cruelty-free.
-                    </p>
-                 </div>
-              </div>
-           </div>
-           <div>
-              <div class="products-box">
-                 <div class="product-image">
-                    <img src="{{URL::to('/public/website')}}/images/vendor-4.png">
-                 </div>
-                 <div class="product-title">
-                    <p> Be True Hair Care was created through a personal journey of growing healthy and natural hair following a big chop from using harsh chemicals. Be True is focused the self-love journey of having healthy hair and scalp. Our researched and handpicked ingredients are designed to strengthen and nourish hair for fast growth.
-                    </p>
-                 </div>
-              </div>
-           </div>
-           <div>
-              <div class="products-box">
-                 <div class="product-image">
-                    <img src="{{URL::to('/public/website')}}/images/vendor-5.png">
-                 </div>
-                 <div class="product-title">
-                    <p> Imfinite Stylish Silvers offer a variety of unique design pieces of jewelry made from the highest quality Italian silver alloyed together with our top-secret master mix to provide a high-grade Sterling silver with a minimum of 92.5 purity. Manufactured and designed in Korea, IMF Stylish Silver jewelry creates an exclusively classy and stylish quality.
-                    </p>
-                 </div>
-              </div>
-           </div>
-           <div>
-              <div class="products-box">
-                 <div class="product-image">
-                    <img src="{{URL::to('/public/website')}}/images/vendor-6.png">
-                 </div>
-                 <div class="product-title">
-                    <p> FT&D is a multifaceted training and development firm focused on building foundational personal and professional goals through focused coaching sessions, action-planning, collaborations, and organizational structure. Their motto is "We all rise when we all thrive!"
-                    </p>
-                 </div>
-              </div>
-           </div>
+           @endforeach
+
+           @if(count($users) == '0')
+               <div class="col-md-12">
+                  <h4 class="not-found">No Feature Vendor Available.</h4>
+               </div>
+            @endif
         </div>
      </div>
   </section>
@@ -161,7 +122,7 @@
            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
               <div class="experience-text">
                  <h3 class="col-yellow upper"> Experience the best Selling
-                    service with benefit  
+                    service with benefit
                  </h3>
                  <p class="col-white">From the comfort of your home or office, you can browse our large catalog of small and minority businesses while enjoying exclusive products delivered to your door in our signature black Beauty Snob Boxes </p>
                  <a href="#contact-us-sec" class="custom-btn1"> READ MORE </a>
@@ -178,7 +139,7 @@
   <section class="our-team-sec">
      <div class="container">
 
-     
+
      <div class="row">
 
      <div class="col-md-6 col-lg-6 col-sm-12 col-12">
@@ -202,14 +163,14 @@
                  <p class="col-black m-b-10"> Collaborate with us to give your products and services the visibility they deserve. </p>
                  <p class="col-black m-b-10"> Choose Your Subscription Plan and Get Started Today! </p>
               </div>
-     </div> 
+     </div>
 
-     </div>   
+     </div>
 
      </div>
   </section>
   <!-- Page Content Section Ends Here -->
-   
+
 
 
   <!-- Pricing Plan Section Starts Here -->
@@ -230,20 +191,20 @@
                     <ul>
                        <li> <i class="fa fa-check"> </i>  Low Monthly Service fee </li>
                        <li> <i class="fa fa-check"> </i>  List up to 4 products </li>
-                       <li> <i class="fa fa-check"> </i> Customer Buy direct from 
-                          your website  
+                       <li> <i class="fa fa-check"> </i> Customer Buy direct from
+                          your website
                        </li>
                        <li> <i class="fa fa-check"> </i> No inventory fees  </li>
                        <li> <i class="fa fa-check"> </i> No Profit Share  </li>
-                       <li> <i class="fa fa-check"> </i> Cross marketing with other 
-                          vendor  
+                       <li> <i class="fa fa-check"> </i> Cross marketing with other
+                          vendor
                        </li>
                        <li> <i class="fa fa-check"> </i>  A Personalized Vendor Portal </li>
                        <li> <i class="fa fa-check"> </i>  Business development training </li>
                        <li> <i class="fa fa-check"> </i> Onsite Advertising Tools  </li>
                        <li> <i class="fa fa-check"> </i>  Virtual BSB experience </li>
-                       <li> <i class="fa fa-check"> </i> Monthly drawing for Physical BSB 
-                          add o Personalized vendor portal  
+                       <li> <i class="fa fa-check"> </i> Monthly drawing for Physical BSB
+                          add o Personalized vendor portal
                        </li>
                     </ul>
                  </div>
@@ -265,11 +226,11 @@
                        <li class="col-white"> <i class="fa fa-check col-white"> </i>  Access to over 10k business and services  </li>
                        <li class="col-white"> <i class="fa fa-check col-white"> </i> Exclusive Customer experience Portal   </li>
                        <li class="col-white"> <i class="fa fa-check col-white"> </i>  Monthly Promo codes to vendor website Special
-                          dedicated Customer service Team.  
+                          dedicated Customer service Team.
                        </li>
                        <li class="col-white"> <i class="fa fa-check col-white"> </i>  w/$10 add on to be BSB Product Tester  </li>
                        <li class="col-white"> <i class="fa fa-check col-white"> </i> w/$10 add on for BSB T-shirt or other
-                          marketing product    
+                          marketing product
                        </li>
                     </ul>
                  </div>
@@ -288,16 +249,16 @@
                  <div class="pricing-box-features">
                     <ul>
                        <li> <i class="fa fa-check"> </i>  Low monthly service fee </li>
-                       <li> <i class="fa fa-check"> </i>  List your biggest seller or 
-                          new product 
+                       <li> <i class="fa fa-check"> </i>  List your biggest seller or
+                          new product
                        </li>
-                       <li> <i class="fa fa-check"> </i> Customer Buy direct from 
-                          your website  
+                       <li> <i class="fa fa-check"> </i> Customer Buy direct from
+                          your website
                        </li>
                        <li> <i class="fa fa-check"> </i> No investory fees  </li>
                        <li> <i class="fa fa-check"> </i> No Profit Share  </li>
-                       <li> <i class="fa fa-check"> </i> Cross marketing with other 
-                          vendor  
+                       <li> <i class="fa fa-check"> </i> Cross marketing with other
+                          vendor
                        </li>
                     </ul>
                  </div>
@@ -359,7 +320,7 @@
                        <input type="text" placeholder="City Name" class="form-control1" name="city">
                     </div>
                  </div>
-                 
+
                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                      <label class="package-radio">Select Packages: </label>
                     <div class="form-field">

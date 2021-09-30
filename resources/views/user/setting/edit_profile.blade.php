@@ -6,99 +6,116 @@
 @section('content')
         <div class="card card-outline-info">
                             <div class="card-body">
-                                <form action="#">
+                                <form method="post" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="form-body">
                                         <h3 class="card-title">Setting > Profile</h3>
                                         <hr>
+                                        @if(session()->has('success'))
+                                            <div class="alert alert-success">
+                                                {{ session()->get('success') }}
+                                            </div>
+                                        @endif
+
                                         <div class="row p-t-20">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">Full Name *</label>
+                                                    <input type="text" id="firstName" class="form-control" name="name" value="{{Auth::user()->name}}" required>
+                                                 </div>
+                                            </div>
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">First Name</label>
-                                                    <input type="text" id="lastName" class="form-control form-control-danger" placeholder="12n">
+                                                    <label class="control-label">Business Name *</label>
+                                                    <input type="text" id="lastName" class="form-control form-control" name="business_name" value="{{Auth::user()->business_name}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Email Info</label>
+                                                    <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Last Name</label>
-                                                    <input type="text" id="lastName" class="form-control form-control-danger" placeholder="12n">
+                                                    <label>Phone *</label>
+                                                    <input type="text" class="form-control" name="phone" value="{{Auth::user()->phone}}" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Address *</label>
+                                                    <input type="text" class="form-control" name="address" value="{{Auth::user()->address}}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Country *</label>
+                                                    <select class="form-control custom-select" name="country_id" required>
+                                                        <option value="">Select</option>
+                                                        @foreach($countries as $val)
+                                                            <option value="{{$val->id}}"
+                                                                {{$val->id == Auth::user()->country_id ? 'selected' : ''}}
+                                                            >{{$val->nicename}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">City *</label>
+                                                    <input type="text" class="form-control" name="city" value="{{Auth::user()->city}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">State *</label>
+                                                    <input type="text" class="form-control" name="state" value="{{Auth::user()->state}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Province</label>
+                                                    <input type="text" class="form-control" name="province" value="{{Auth::user()->province}}" required>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Website Link *</label>
+                                                    <input type="text" class="form-control" name="website_link" value="{{Auth::user()->website_link}}" required>
                                                 </div>
                                             </div>
                                             <!--/span-->
-                                        </div>
-                                      
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="email" class="form-control" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input type="text" class="form-control" placeholder="Phone">
-                                                </div>
+                                            <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="input-file-now">Upload Image</label>
+                                                <input type="file" id="input-file-now" class="dropify" name="image" />
                                             </div>
                                         </div>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>Address</label>
-                                                    <input type="email" class="form-control" placeholder="Address">
-                                                </div>
-                                            </div>                                            
-                                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="control-label">Country</label>
-                                                    <select class="form-control custom-select" data-placeholder="Choose a Country" tabindex="1">
-                                                        <option value="Category 1">Category 1</option>
-                                                        <option value="Category 2">Category 2</option>
-                                                        <option value="Category 3">Category 5</option>
-                                                        <option value="Category 4">Category 4</option>
-                                                    </select>
-                                                </div>
-                                            </div>                                           
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="control-label">City</label>
-                                                    <select class="form-control custom-select" data-placeholder="Choose a City" tabindex="1">
-                                                        <option value="Category 1">Category 1</option>
-                                                        <option value="Category 2">Category 2</option>
-                                                        <option value="Category 3">Category 5</option>
-                                                        <option value="Category 4">Category 4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="control-label">State</label>
-                                                    <select class="form-control custom-select" data-placeholder="Choose a State" tabindex="1">
-                                                        <option value="Category 1">Category 1</option>
-                                                        <option value="Category 2">Category 2</option>
-                                                        <option value="Category 3">Category 5</option>
-                                                        <option value="Category 4">Category 4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Zip</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Product URL">
-                                                </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="input-file-now">Upload Logo</label>
+                                                <input type="file" id="input-file-now" class="dropify" name="logo_file" />
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-12">               
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="input-file-now">Upload Profile Picture</label>
-                                                    <input type="file" id="input-file-now" class="dropify" />
+                                                    <label>Business Discription</label>
+                                                    <textarea class="form-control" rows="5" cols="40" name="description">{{Auth::user()->description}}</textarea>
                                                 </div>
                                             </div>
+                                            <!--/span-->s
                                         </div>
                                         <!--/row-->
                                     </div>

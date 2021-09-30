@@ -5,6 +5,7 @@ namespace App\Http\Controllers\vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\countries;
+use App\Models\membership\Membership_vendor as MV;
 use App\Models\User;
 use Auth;
 use Hash;
@@ -16,7 +17,7 @@ class vendorController extends Controller
 
     	return view('vendor.index');
     }
-    
+
     function basicInfo(){
         $data['countries'] = countries::all();
 
@@ -67,7 +68,8 @@ class vendorController extends Controller
 
     function memberPlan(){
 
-    	return view('vendor.virtual.member_plan');
+        $data=MV::latest()->limit(4)->get();
+    	return view('vendor.virtual.member_plan', ['data' =>$data]);
     }
     function memberStatus(){
 

@@ -18,50 +18,32 @@
             <h3> Featured Vendors </h3>
          </div>
          <div class="feature-slider no-arrows">
+            @foreach ($users as $key =>$val )
             <div>
-               <div class="products-box product-box3">
+               <div class="products-box">
                   <div class="product-image">
-                     <img src="{{URL::to('/public/website')}}/images/vendor-1.png">
+                    <center> <img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"> </center>
                   </div>
                   <div class="product-title">
-                     <p> What is Pure Living and Beauty? Pure Living is being the "Authentic You", with inner and outer beauty. Our products are handmade with all natural ingredients that infuses into your skin. Especially blended to focus on self-love and self-care, Pure Living and Beauty products give an exclusive and luxurious experience at first use. Your skin will not only be moisturized but enhance your natural glow!
-                     </p>
+                     <h4> {{$val->name}}</h4>
+                     <span class="cut-text"> {{$val->email}} </span><br>
+                     <span class="cut-text"> {{$val->business_name}} </span><br>
+                     <span class="cut-text">{{@$val->city}} <small>{{@$val->country->country}}</small>  </span><br>
+                     <p class="cut-text"> {{$val->description}} </p>
+
+
+
+
                   </div>
                </div>
             </div>
-            <div>
-               <div class="products-box product-box3">
-                  <div class="product-image">
-                     <img src="{{URL::to('/public/website')}}/images/vendor-2.png">
-                  </div>
-                  <div class="product-title">
-                     <p> LaBella Diamond Cosmetics is a dynamic and versatile cosmetics line focused on personal care and beauty. We focus on self-care to develop a skincare routine from our vegan sugar scrubs to our Slick Lip line. Our specially blended formulas are vegan and cruelty-free. LaBella Diamond provides a luxurious journey to healthy, glowing skin for our customers to look and feel their best.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div>
-               <div class="products-box product-box3">
-                  <div class="product-image">
-                     <img src="{{URL::to('/public/website')}}/images/vendor-3.png">
-                  </div>
-                  <div class="product-title">
-                     <p> Shea Culture & Company is a small family-owned business that focuses on creating natural and organic bath and body products. Our mission is to create effective natural products for my customers and educating them on the importance of natural products and how they can be healing to your body. Our products are made in small batches to ensure the best quality with most of our items being vegan and cruelty-free.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div>
-               <div class="products-box product-box3">
-                  <div class="product-image">
-                     <img src="{{URL::to('/public/website')}}/images/vendor-4.png">
-                  </div>
-                  <div class="product-title">
-                     <p> Be True Hair Care was created through a personal journey of growing healthy and natural hair following a big chop from using harsh chemicals. Be True is focused the self-love journey of having healthy hair and scalp. Our researched and handpicked ingredients are designed to strengthen and nourish hair for fast growth.
-                     </p>
-                  </div>
-               </div>
-            </div>
+            @endforeach
+
+            @if(count($users) == '0')
+                <div class="col-md-12">
+                   <h4 class="not-found">No Products Available.</h4>
+                </div>
+             @endif
          </div>
       </div>
    </section>
@@ -88,12 +70,12 @@
                         @if(Auth::check())
                            <a href="javascript:void(0)" class="btn btn-success gold-b favproduct"  data-id="{{base64_encode($val->id)}}">
                               @if(empty($val->favprod->id))
-                              <i class="material-icons md-18"> favorite_border </i>  
+                              <i class="material-icons md-18"> favorite_border </i>
                               @else
                              <i class="material-icons md-18"> favorite</i>
                               @endif
                            </a>
-                        @endif 
+                        @endif
                      </div>
                      <div class="product-tag4">
                         SPECIAL OFFER

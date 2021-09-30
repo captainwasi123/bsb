@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\products\categories;
 use App\Models\favourite_prod_user as fav;
+use App\Models\membership\Membership_user as MU;
 use Auth;
 
 class product extends Model
@@ -53,5 +54,10 @@ class product extends Model
     public function favprod()
     {
         return $this->belongsTo(fav::class, 'id', 'product_id')->where('user_id', Auth::id() );
+    }
+
+     public function membershipUser()
+    {
+return $this->hasOne(MU::class, 'id', 'product_id');
     }
 }

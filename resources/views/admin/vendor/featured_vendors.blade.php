@@ -5,61 +5,63 @@
 <!-- Row -->
     <div class="card-group">
         <div class="card">
-          <div class="card-body">
-                                <h3 class="card-title">Vendors > Featured</h3>
-                                <div class="table-responsive m-t-20">
-                                    <table id="myTable" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>S.NO</th>
-                                                <th>IMAGE</th>
-                                                <th>ID</th>
-                                                <th>CLIENT NAME</th>
-                                                <th>BUSINESS NAME</th>
-                                                <th>EMAIL</th>
-                                                <th>COUNTRY</th>
-                                                <th>WEBSITE LINK</th>
-                                                <th>TOTAL PRODUCTS</th>
-                                                <th>MEMBERSHIP STATUS</th>
-                                                <th>ACTION</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>DIVSNPIXEL</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>200</td>  
-                                                <td>Active</td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>                  
-                                                </td>                                                
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>DIVSNPIXEL</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>50</td>  
-                                                <td>Expired</td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>                  
-                                                </td>                                                
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-        </div>
+            <div class="card-body">
+                <h3 class="card-title">Vendors > Feature</h3>
+
+                <div class="col-md-6">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
+                </div>
+
+                <div class="table-responsive m-t-20">
+                    <table id="myTable" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>S.NO</th>
+                                <th>IMAGE</th>
+                                <th>VENDOR NAME</th>
+                                <th>BUSINESS NAME</th>
+                                <th>PHone</th>
+                                <th>EMAIL</th>
+                                <th>COUNTRY</th>
+                                <th>WEBSITE LINK</th>
+                                <th>TOTAL PRODUCTS</th>
+
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {{-- sa --}}
+                           @foreach($data as $key => $val)
+                           <tr>
+                               <td>{{++$key}}</td>
+                               <td><img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" width="50px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>
+                               <td>{{$val->name}}</td>
+                               <td>{{$val->business_name}}</td>
+                               <td>{{$val->phone}}</td>
+                               <td>{{$val->email}}</td>
+                               <td>{{@$val->country->country}}</td>
+                               <td>{{$val->website_link}}</td>
+                               <td></td>
+
+                               <td class="p-l-0 p-r-0 action">
+                                   <a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="btn btn-success gold-b unfeatureVendor"  data-toggle="tooltip" data-original-title="Remove  Feature Vendor"><i class="fa fa-trash"></i> </a>
+                               </td>
+                           </tr>
+                       @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
         <!-- Column -->
     </div>
 
