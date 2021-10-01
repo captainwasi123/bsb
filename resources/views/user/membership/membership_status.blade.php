@@ -7,41 +7,58 @@
         <div class="card">
           <div class="card-body">
                                 <h3 class="card-title">Membership > Status</h3>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    @if(session()->has('success'))
+                                    <div class="alert alert-success">
+                                    {{ session()->get('success') }}
+                                    </div>
+                                    @endif
+                                    @if(session()->has('error'))
+                                    <div class="alert alert-danger">
+                                    {{ session()->get('error') }}
+                                    </div>
+                                    @endif
+                                    </div>
+                                </div>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>S.NO</th>
-                                                <th>NAME</th>
-                                                <th>MONTH</th>
+                                                <th>ID</th>
+                                                <th>USER NAME</th>
+                                                <th>PACKAGE NAME</th>
+                                                <th>BUY DATe</th>
+                                                <th>EXPIRY DATE</th>
                                                 <th>STATUS</th>
-                                                <th>TOTAL SPENT</th>
-                                                <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>May</td>
-                                                <td>Pending</td>
-                                                <td>$110</td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>May</td>
-                                                <td>Approved</td>
-                                                <td>$110</td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>                                            
+                                            @foreach($data as $key => $val)
+                                <tr>
+                                    <td>{{++$key}}</td>
+                                    <td>{{$val->id}}</td>
+                                    <td>{{@$val->user->name}}</td>
+                                    <td>{{@$val->membershipUser->package_name}}</td>
+                                    <td>{{$val->buy_date}}</td>
+                                    <td>{{$val->expired_date}}</td>
+
+                                    <td>
+                                        @switch($val->status)
+                                            @case('1')
+                                                <label class="label label-success">Active</label>
+                                                @break
+
+                                            @case('2')
+                                                <label class="label label-danger">Expired</label>
+                                                @break
+
+                                        @endswitch
+                                    </td>
+                                </tr>
+                            @endforeach                                      
                                         </tbody>
                                     </table>
                                 </div>

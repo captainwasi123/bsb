@@ -63,7 +63,7 @@ class webController extends Controller
 
     function physicalBox(){
 
-        return view('web.physicalBox');
+        return view('web.physicalBox'); 
     }
 
 

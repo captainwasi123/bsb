@@ -14,6 +14,8 @@
 <script src="{{URL::to('/public/admin')}}/js/custom.min.js"></script>
 <script src="{{URL::to('/public/admin')}}/js/dashboard1.js"></script>
 <script src="{{URL::to('/public/admin')}}/js/prodWishList.js"></script>
+<script src="{{URL::to('/public/admin')}}/js/dev/user.js"></script>
+
 
 
 

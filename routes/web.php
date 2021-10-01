@@ -90,6 +90,7 @@ use Illuminate\Support\Facades\Route;
             });
 
         Route::get('/virtual/plan', 'vendorController@memberPlan')->name('vendor.virtual.memberPlan');
+        Route::get('/virtual/buyMV/{id}', 'vendorController@buyMembershipVonder');
         Route::get('/virtual/status', 'vendorController@memberStatus')->name('vendor.virtual.memberStatus');
     });
 

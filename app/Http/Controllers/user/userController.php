@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\favourite_prod_user as Fav;
 use App\Models\countries;
 use App\Models\membership\Membership_user as MU;
-use App\Models\membership\buy_membership_package as BuyMP;
+use App\Models\membership\user_buy_membership_package as BuyMP;
 use Auth;
 use Hash;
 
@@ -26,36 +26,33 @@ class userController extends Controller
         return view('user.membership.membership_plan',['data' => $data]);
     }
 
-    public function buyMembershipUser($id)
+    public function buyMembershipUser( $id)
     {
         $id=base64_decode($id);
+        $st = BuyMP::where('user_id', Auth::id())->update([
+            'status' => '2'
+        ]);
 
-      
-        $data= BuyMP::where(['user_id' => Auth::id(), 'membership_user_id' => $id])->first();
+        $date = date('Y-m-d');
+            
+        $mp = new BuyMP;
+        $mp->user_id = Auth::id();
+        $mp->membership_user_id= $id;
+        $mp->status=1;
+        $mp->expired_date=date('Y-m-d', strtotime($date. ' + 30 days')); 
+        $mp->buy_date=$date;
+        
+        $mp->save();
+        return redirect()->back()->with('success', 'Membership Package has been bought Successfully.');
 
-        dd($data);
-        if(empty($data->id))
-        {
-            $mp = new BuyMP;
-            $mp->user_id = Auth::id();
-            $mp->membership_user_id= $id;
-            $mp->save();
 
-            return '1';
-        }
-        else
-        {
-
-            BuyMP::destroy($data->id);
-
-            return '0';
-
-        }
+        
     }
 
     public function memberStatus()
     {
-        return view('user.membership.membership_status');
+        $data =BuyMP::where('user_id', Auth::id())->orderBy('id','desc')->get();
+        return view('user.membership.membership_status',[ 'data' => $data]);
     }
     public function whishlistProduct()
     {

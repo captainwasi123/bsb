@@ -19,44 +19,39 @@
                                                 <th>REG AT</th>
                                                 <th>MEMBERSHIP</th>
                                                 <th>MEMBERSHIP STATUS</th>
-                                                <th>ACTION</th>
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>Anas</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>2020-02-20</td>
-                                                <td>Active</td>
-                                                <td>
-                                                    <div class="switch">
-                                                        <label>OFF<input type="checkbox" checked><span class="lever"></span>ON</label>
-                                                    </div>
-                                                </td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>                  
-                                                </td>                                                
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>Anas</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>2020-02-20</td>
-                                                <td>Active</td>
-                                                <td>
-                                                    <div class="switch">
-                                                        <label>OFF<input type="checkbox" checked><span class="lever"></span>ON</label>
-                                                    </div>
-                                                </td>
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-ban" aria-hidden="true"></i></button>                  
-                                                </td>                                                
-                                            </tr>                                            
+                             @foreach($data as $key => $val)
+                                <tr>
+                                    <td>{{++$key}}</td>
+                                    <td><img src="{{@URL::to('/public/admin/images/users/'.$val->user->image)}}" width="50px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>
+
+                                    <td>{{@$val->user->name}}</td>
+                                    <td>{{@$val->user->email}}</td>
+                                    <td>{{@$val->user->country->country}}</td>
+                                    <td>{{@$val->user->created_at}}</td>
+                                    <td>{{@$val->membershipUser->package_name}}</td>
+                                     
+                                      <td>
+                                        @switch($val->status)
+                                            @case('1')
+                                               <center> <label class="label label-success">Active</label></center>
+                                                @break
+
+                                            @case('2')
+                                               <center> <label class="label label-danger">Expired</label></center>
+                                                @break
+
+                                        @endswitch
+                                    </td>
+
+
+
+
+                                </tr>
+                            @endforeach                                                
                                         </tbody>
                                     </table>
                                 </div>

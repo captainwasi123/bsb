@@ -4,7 +4,24 @@
 
                 <div class="row el-element-overlay ">
                     <div class="col-md-12 p-b-20">
-                        <h3 class="card-title">Virtual > Membership Plan</h3></div>
+                        <h3 class="card-title">Virtual > Membership Plan</h3>
+                        <div class="row">
+                                    <div class="col-md-6">
+                                        @if(session()->has('success'))
+                                            <div class="alert alert-success">
+                                                {{ session()->get('success') }}
+                                            </div>
+                                        @endif
+                                        @if(session()->has('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session()->get('error') }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                     </div>
+
+
                         @foreach ($data as $key => $val )
                         <div class="col-lg-3 col-md-6">
 
@@ -39,8 +56,13 @@
                                             <input type="checkbox" id="basic_checkbox_2" class="filled-in" checked />
                                             <label for="basic_checkbox_2">BSB {{@$val->product->title}}</label>
                                         </p>
+                                     <div class="product-btn2">
+                                 @if(Auth::check())
+                           <a href="javascript:void(0)" class="btn btn-success gold-b vendorbuypackage" data-id="{{base64_encode($val->id)}}"> Buy Now </a>
+                              @endif
+                              </div>
 
-                                       <button type="submit" class="btn btn-success gold-b"> Buy Now</button>
+                                       {{--  <button type="submit" class="btn btn-success gold-b"> Buy Now</button>  --}}
                                     </div>
                                 </div>
                             </div>

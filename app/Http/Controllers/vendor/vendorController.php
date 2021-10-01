@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\countries;
 use App\Models\membership\Membership_vendor as MV;
+use App\Models\membership\Vendor_buy_membership_package as BuyMP;
 use App\Models\User;
 use Auth;
 use Hash;
@@ -71,9 +72,34 @@ class vendorController extends Controller
         $data=MV::latest()->limit(4)->get();
     	return view('vendor.virtual.member_plan', ['data' =>$data]);
     }
+
+    public function buyMembershipVonder( $id)
+    {
+        $id=base64_decode($id);
+        $st = BuyMP::where('user_id', Auth::id())->update([
+            'status' => '2'
+        ]);
+
+        $date = date('Y-m-d');
+            
+        $mp = new BuyMP;
+        $mp->user_id = Auth::id();
+        $mp->membership_vendor_id= $id;
+        $mp->status=1;
+        $mp->expired_date=date('Y-m-d', strtotime($date. ' + 30 days')); 
+        $mp->buy_date=$date;
+        
+        $mp->save();
+        return redirect()->back()->with('success', 'Membership Package has been bought Successfully.');
+
+
+        
+    }
     function memberStatus(){
 
-    	return view('vendor.virtual.member_status');
+
+        $data =BuyMP::where('user_id', Auth::id())->orderBy('id','desc')->get();
+    	return view('vendor.virtual.member_status',['data'=> $data]);
     }
 
 }

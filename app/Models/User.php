@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Auth;
+use App\Models\membership\user_buy_membership_package as UBMP;
 use App\Models\countries;
 use App\Models\favourite_prod_user as fav;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -92,6 +93,13 @@ class User extends Authenticatable
 
         return $this->hasMany(fav::class, 'user_id' ,'id');
     }
+
+    public function userBuyMP(){
+        
+        return $this->hasMany(UBMP::class);
+    }
+   
+
     /**
      * The attributes that are mass assignable.
      *

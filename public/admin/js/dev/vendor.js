@@ -9,4 +9,20 @@ $(document).ready(function() {
             window.location.href = host + '/product/delete/' + id;
         }
     });
+
+      $(document).on('click', '.vendorbuypackage', function() {
+          
+        var id = $(this).data('id');
+        if (confirm('Are you sure want to Buy This Package?')) {
+            window.location.href = host + '/virtual/buyMV/' + id;
+        }
+       
+       
+
+             
+
+       
+
+        });
+
 });

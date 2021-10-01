@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\membership\user_buy_membership_package as BuyMP;
 use Auth;
 use App\Models\favourite_prod_user as Fav;
 
@@ -23,7 +24,8 @@ class userController extends Controller
     }
     function usersPremium(){
 
-        return view('admin.users.premium_users');
+        $data=BuyMP::orderBy('id', 'desc')->get();
+        return view('admin.users.premium_users',['data' => $data]);
     }
 
     function changeStatus($id, $status){
