@@ -4,7 +4,7 @@ namespace App\Models\membership;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Products\product;
+use App\Models\products\product;
 use App\Models\Products\categories;
 class Membership_user extends Model
 {
