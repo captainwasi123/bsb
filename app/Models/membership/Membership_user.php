@@ -5,7 +5,7 @@ namespace App\Models\membership;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\products\product;
-use App\Models\Products\categories;
+use App\Models\products\categories;
 class Membership_user extends Model
 {
     use HasFactory;
