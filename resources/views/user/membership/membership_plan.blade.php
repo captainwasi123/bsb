@@ -51,17 +51,10 @@
                                 </div>
                                 <hr style="background: #cb8819;">
                                 <div class="el-card-content">
-                                    <p><span><a><i class="fa fa-check">&nbsp;</i></a> {{ $val->keyword }} Keywords</span></p>
-
-                                    <hr style="background: #cb8819;">
-                                    <p>
-                                        <input type="checkbox" id="basic_checkbox_1" class="filled-in" checked />
-                                        <label for="basic_checkbox_1">BSB {{@$val->category->name}}</label>
-                                    </p>
-                                    <p>
-                                        <input type="checkbox" id="basic_checkbox_2" class="filled-in" checked />
-                                        <label for="basic_checkbox_2">BSB {{@$val->product->title}}</label>
-                                    </p>
+                                   @foreach($val->UserMPDescr as $key => $value)
+                                         <p><span><a><i class="fa fa-check">&nbsp;</i></a> {{ @$value->description}} Keywords</span></p>
+                                        <hr style="background: #cb8819;">
+                                    @endforeach
 
                                     
                                  <div class="product-btn2">

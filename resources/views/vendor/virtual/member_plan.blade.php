@@ -45,17 +45,13 @@
                                     </div>
                                     <hr style="background: #cb8819;">
                                     <div class="el-card-content">
-                                        <p><span><a><i class="fa fa-check">&nbsp;</i></a> {{ $val->keyword }} Keywords</span></p>
-
+                                    @foreach($val->VedorMPDescr as $key => $value)
+                                         <p><span><a><i class="fa fa-check">&nbsp;</i></a> {{ @$value->description}} Keywords</span></p>
                                         <hr style="background: #cb8819;">
-                                        <p>
-                                            <input type="checkbox" id="basic_checkbox_1" class="filled-in" checked />
-                                            <label for="basic_checkbox_1">BSB {{@$val->category->name}}</label>
-                                        </p>
-                                        <p>
-                                            <input type="checkbox" id="basic_checkbox_2" class="filled-in" checked />
-                                            <label for="basic_checkbox_2">BSB {{@$val->product->title}}</label>
-                                        </p>
+                                    @endforeach
+                                     
+                                       
+                                       
                                      <div class="product-btn2">
                                  @if(Auth::check())
                            <a href="javascript:void(0)" class="btn btn-success gold-b vendorbuypackage" data-id="{{base64_encode($val->id)}}"> Buy Now </a>

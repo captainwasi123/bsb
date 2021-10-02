@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\countries;
 use App\Models\membership\Membership_vendor as MV;
 use App\Models\membership\vendor_buy_membership_package as BuyMP;
+use App\Models\membership\vendor_mpackage_description as VMPD;
+
 use App\Models\User;
 use Auth;
 use Hash;
@@ -69,8 +71,10 @@ class vendorController extends Controller
 
     function memberPlan(){
 
-        $data=MV::latest()->limit(4)->get();
-    	return view('vendor.virtual.member_plan', ['data' =>$data]);
+        $data=MV::latest()->limit(2)->get();
+    //  $data['VedorMPDescr']=VMPD::all();        
+        // dd($data);
+    	return view('vendor.virtual.member_plan',['data'=> $data]);
     }
 
     public function buyMembershipVonder( $id)

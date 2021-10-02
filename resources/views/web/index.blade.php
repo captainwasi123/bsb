@@ -209,7 +209,14 @@
                     </ul>
                  </div>
                  <div class="pricing-box-button">
-                    <a href="#contact-us-sec" class="custom-btn1"> DISCOVER NOW </a>
+
+                    @if(Auth::check('vendor_status',2))
+                    <a href="{{url('vendr/virtual/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
+                      
+                    @else
+                    <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
+
+                    @endif
                  </div>
               </div>
            </div>
@@ -235,7 +242,13 @@
                     </ul>
                  </div>
                  <div class="pricing-box-button">
-                    <a href="#contact-us-sec" class="custom-btn2"> DISCOVER NOW </a>
+                   @if(Auth::check())
+                    <a href="{{url('user/membership/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
+                      
+                    @else
+                    <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
+
+                    @endif
                  </div>
               </div>
            </div>
@@ -263,7 +276,13 @@
                     </ul>
                  </div>
                  <div class="pricing-box-button">
-                    <a href="#contact-us-sec" class="custom-btn1"> DISCOVER NOW </a>
+                    @if(Auth::check('vendor_status',2))
+                    <a href="{{url('vendr/virtual/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
+                      
+                    @else
+                    <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
+
+                    @endif
                  </div>
               </div>
            </div>
