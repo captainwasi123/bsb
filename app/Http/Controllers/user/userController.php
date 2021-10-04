@@ -73,7 +73,7 @@ class userController extends Controller
     {
         $data=FVENDR::where('user_id', Auth::id())->get();
        
-        dd($count);
+        
         return view('user.whishlist.vendors',['data'=> $data]);
     }
 
