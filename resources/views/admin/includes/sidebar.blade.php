@@ -41,7 +41,6 @@
                 <li class="nav-small-cap">FEATURED PRODUCTS</li>
                 <li><a href="{{route('admin.featured_product.productPending')}}">PENDING</a></li> 
                 <li><a href="{{route('admin.featured_product.productPublish')}}">PUBLISHED</a></li> 
-                <li><a href="{{route('admin.featured_product.productExpired')}}">EXPIRED</a></li> 
                 <li><a href="{{route('admin.featured_product.productBlocked')}}">BLOCKED</a></li> 
 
                 <li class="nav-small-cap">SETTING</li>

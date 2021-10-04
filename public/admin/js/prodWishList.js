@@ -9,4 +9,14 @@ $(document).ready(function() {
             window.location.href = host + '/user/delete/' + id;
         }
     });
+
+    
+    $(document).on('click', '.deletewhishlistVendors', function() {
+        var id = $(this).data('id');
+        if (confirm('Are you sure want to Delete this?')) {
+            window.location.href = host + '/user/delete/' + id;
+        }
+    });
+
+
 });

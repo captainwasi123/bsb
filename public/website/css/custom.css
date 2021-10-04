@@ -1326,6 +1326,19 @@
         font-size: 15px;
         letter-spacing: 0.4px;
     }
+
+    
+    .custom-tag4 {
+        position: absolute;
+        background: #c98827;
+        right: 0px;
+        top: 0px;
+        color: white;
+        padding: 5px 13px;
+        border-radius: 0px 7px 1px 11px;
+        font-size: 15px;
+        letter-spacing: 0.4px;
+      }
     
     .menu-item:hover ol.sub-menu {
         display: block;
@@ -2112,4 +2125,6 @@
             line-height: 27px;
             margin-bottom: 0px !important;
         }
+
+       
     }

@@ -52,7 +52,7 @@ class product extends Model
     }
 
     public function favprod()
-    {
+    { 
         return $this->belongsTo(fav::class, 'id', 'product_id')->where('user_id', Auth::id() );
     }
 

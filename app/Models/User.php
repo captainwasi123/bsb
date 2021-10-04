@@ -10,7 +10,9 @@ use Auth;
 use App\Models\membership\user_buy_membership_package as UBMP;
 use App\Models\countries;
 use App\Models\favourite_prod_user as fav;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
+use App\Models\fav_vendor as FVEND;
+
+
 
 class User extends Authenticatable
 {
@@ -95,10 +97,17 @@ class User extends Authenticatable
     }
 
     public function userBuyMP(){
-        
+
         return $this->hasMany(UBMP::class);
     }
+
+
+    public function favVender()
+    {
+        return $this->belongsTo(FVEND::class, 'id', 'vendor_id')->where('user_id', Auth::id());
+    }
    
+
 
     /**
      * The attributes that are mass assignable.

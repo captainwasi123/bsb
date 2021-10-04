@@ -41,7 +41,7 @@
                                                  <td>{{++$key}}</td>
                                                <td>{{ $val->id }}</td>
                                                 <td>{{@$val->product->title}}</td>
-                                                <td><img src="{{@URL::to('/public/storage/product/'.$val->product->image)}}" width="60px"></td>
+                                                <td><img src="{{@URL::to('/public/storage/product/'.$val->product->image)}}" width="60px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>
 
                                                 <td>{{@$val->user->name}}</td>
 

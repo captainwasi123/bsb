@@ -9,6 +9,8 @@ use App\Models\favourite_prod_user as Fav;
 use App\Models\countries;
 use App\Models\membership\Membership_user as MU;
 use App\Models\membership\user_buy_membership_package as BuyMP;
+use App\Models\fav_vendor as FVENDR;
+use App\Models\products\product;
 use Auth;
 use Hash;
 
@@ -69,9 +71,19 @@ class userController extends Controller
     }
     public function whishlistVendors()
     {
-        return view('user.whishlist.vendors');
+        $data=FVENDR::where('user_id', Auth::id())->get();
+       
+        dd($count);
+        return view('user.whishlist.vendors',['data'=> $data]);
     }
 
+    public function deletewhishlistVendors($id)
+    {
+        $id =base64_decode($id);
+        $fv=FVENDR::destroy($id);
+
+        return redirect()->back()->with('success', 'Vendor Deleted Successfully');
+    }
 
 
     public function settingProfile()
@@ -141,4 +153,6 @@ class userController extends Controller
 
         return redirect()->back()->with('success', 'Request submitted.');
     }
+
+  
 }

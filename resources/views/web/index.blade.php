@@ -79,34 +79,48 @@
            <h3> Featured Vendors </h3>
         </div>
 
-        <div class="feature-slider no-arrows">
+      <div class="feature-slider no-arrows">
             @foreach ($users as $key =>$val )
-           <div>
-              <div class="products-box">
-                 <div class="product-image">
-                   <center> <img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"> </center>
-                 </div>
-                 <div class="product-title">
-                    <h4> {{$val->name}}</h4>
-                    <span class="cut-text"> {{$val->email}} </span><br>
-                    <span class="cut-text"> {{$val->business_name}} </span><br>
-                    <span class="cut-text">{{@$val->city}} <small>{{@$val->country->country}}</small>  </span><br>
-                    <p class="cut-text"> {{$val->description}} </p>
+            
+            <div>
+               <div class="products-box">
+                  <div class="product-image">
+                    <center> <img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"> </center>
+                  </div>
+                  <div class="product-title" >
+                  
+                     {{--  <span class="cut-text"> {{$val->email}} </span><br>
+                     <span class="cut-text"> {{$val->business_name}} </span><br>
+                     <span class="cut-text">{{@$val->city}} <small>{{@$val->country->country}}</small>  </span><br>  --}}
+                     <p class="feature-cut-text" > {{$val->description}} </p>
+
+            <div class="" style='text-align:right;'>
+                         @if(Auth::check())
+                           <a href="javascript:void(0)" class="btn btn-success custom-tag4 favouriteVendor"  data-id="{{base64_encode($val->id)}}">
+                              @if(empty($val->favVender->id))
+                              <i class="material-icons md-18"> favorite_border </i>
+                              @else
+                             <i class="material-icons md-18"> favorite</i>
+                              @endif
+                           </a>
+                        @endif
+                     </div>
+            </div>
 
 
-
-
-                 </div>
-              </div>
-           </div>
-           @endforeach
-
-           @if(count($users) == '0')
-               <div class="col-md-12">
-                  <h4 class="not-found">No Feature Vendor Available.</h4>
+                  </div>
                </div>
-            @endif
-        </div>
+             
+            @endforeach
+
+            @if(count($users) == '0')
+                <div class="col-md-12">
+                   <h4 class="not-found">No Products Available.</h4>
+                </div>
+             @endif
+
+             
+         </div>
      </div>
   </section>
   <!-- Featured Products Section Ends Here -->

@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
         Route::get('categories', 'webController@categories')->name('web.categories');
         Route::get('category/{id}/{name}', 'webController@category')->name('web.category');
         Route::get('/product/fav/{id}', 'webController@favprod');
+        Route::get('/vendr/fav/{id}', 'webController@favVender');
+      
         Route::get('physicalBox', 'webController@physicalBox')->name('web.physical_box');
 
 
@@ -48,12 +50,16 @@ use Illuminate\Support\Facades\Route;
         Route::get('delete/{id}', 'userController@deleteWishlistProduct');
 
         Route::get('/whishlist/vendors', 'userController@whishlistVendors')->name('user.whishlist.whishlistVendors');
+        Route::get('delete/{id}', 'userController@deletewhishlistVendors');
+
 
         Route::get('/setting/profile', 'userController@settingProfile')->name('user.setting.settingProfile');
         Route::post('/setting/profile', 'userController@settingProfileSubmit');
         Route::get('/setting/password', 'userController@settingPassword')->name('user.setting.settingPassword');
         Route::post('/setting/password', 'userController@settingPasswordSubmit');
         Route::post('become_a_vendor', 'userController@becomeVendor')->name('user.become_a_vendor');
+       
+
 
     });
 

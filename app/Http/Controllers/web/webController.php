@@ -9,6 +9,8 @@ use App\Models\products\categories;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\favourite_prod_user as fav;
+use App\Models\fav_vendor as FVENDR;
+
 
 
 class webController extends Controller
@@ -39,6 +41,30 @@ class webController extends Controller
         }
     }
 
+    function favVender($id)
+    {
+       $id=base64_decode($id);
+    
+       $data=FVENDR::where(['user_id' => Auth::id(), 'vendor_id' => $id])->first();
+     
+        if(empty($data->id)){
+
+            $fv= new FVENDR;
+            $fv->user_id=Auth::id();
+            $fv->vendor_id=$id; 
+            $fv->save();
+
+            return '1';
+        }
+        else{
+
+            FVENDR::destroy($data->id);
+
+            return '0';
+
+        }
+
+    }
 
 
     function about(){
