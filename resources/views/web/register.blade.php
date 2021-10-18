@@ -47,9 +47,13 @@
                      <h6 class="col-white"> Confirm Password </h6>
                      <input type="password" class="form-field5" name="password_confirmation" required>
                   </div>
-                    <input type="checkbox" class="form-control termc" name="terms" value="1"  required/>
-                  <span  class="col-white">Agree with the   <a href="{{URL::to('/public/storage')}}/term-condition/BSBTERMSCONDITIONS.pdf" class="col-white"  target="_blank">&nbsp;terms and conditions</a> <span>
-                     {{--  <input type="submit" value="SIGN UP" class="submit-btn3" name="">  --}}
+                  <div class="form-label5">
+                    <input type="checkbox" class="form-field5 termc" name="terms" value="1"  required>
+                  <span  class="col-white"> By clicking Create Account, you agree to our 
+                  <a href="{{URL::to('/public/storage')}}/term-condition/BSBTERMSCONDITIONS.pdf" class="col-white"  target="_blank"><strong>Terms and Condition</strong></a>
+                      and 
+                      <a href="{{URL::to('/public/storage')}}/term-condition/BSBPrivacyPolicy.pdf" class="col-white"  target="_blank"><strong>Privacy Policy</strong></a> </span>  
+                     
                   </div>
                   <div class="form-label5 m-t-20">
                      <input type="submit" value="SIGN UP" class="submit-btn3" name="">
