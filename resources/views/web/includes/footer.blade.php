@@ -18,7 +18,7 @@
                        <li>   <a href="{{route('web.about')}}"> ABOUT US </a></li>
                         <li>  <a href="{{route('web.categories')}}"> CATEGORIES </a> </li>
                         <li>  <a href="{{route('web.physical_box')}}"> PHYSICAL BOX </a> </li>
-                         <li>  <a href="{{URL::to('/public/storage')}}/term-condition/BSBPrivacyPolicy.pdf"> PRIVACY POLICY </a> </li>
+                         <li>  <a href="{{URL::to('/public/storage')}}/term-condition/BSBPrivacyPolicy.pdf"  target="_blank"> PRIVACY POLICY </a> </li>
                      </ul>
                   </div>
                   <div class="footer-list2">

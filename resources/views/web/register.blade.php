@@ -48,7 +48,7 @@
                      <input type="password" class="form-field5" name="password_confirmation" required>
                   </div>
                     <input type="checkbox" class="form-control termc" name="terms" value="1"  required/>
-                  <span  class="col-white">Agree with the   <a href="{{URL::to('/public/storage')}}/term-condition/BSBTERMSCONDITIONS.pdf" class="col-white">&nbsp;terms and conditions</a> <span>
+                  <span  class="col-white">Agree with the   <a href="{{URL::to('/public/storage')}}/term-condition/BSBTERMSCONDITIONS.pdf" class="col-white"  target="_blank">&nbsp;terms and conditions</a> <span>
                      {{--  <input type="submit" value="SIGN UP" class="submit-btn3" name="">  --}}
                   </div>
                   <div class="form-label5 m-t-20">
