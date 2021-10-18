@@ -36,3 +36,9 @@
   font-size: 15px;
   letter-spacing: 0.4px;
 }
+
+.termc{
+  width: 5% !important;
+  height: calc(0.5em + 0.75rem + 3px) !important;
+
+}

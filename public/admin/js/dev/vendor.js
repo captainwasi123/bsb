@@ -17,11 +17,6 @@ $(document).ready(function() {
             window.location.href = host + '/virtual/buyMV/' + id;
         }
        
-       
-
-             
-
-       
 
         });
 

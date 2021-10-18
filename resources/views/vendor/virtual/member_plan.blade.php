@@ -39,7 +39,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="package">
-                                                <h3 class="gold-c">${{ $val->package_price }}</h3>
+                                                <h3 class="gold-c">{{ $val->package_price }}</h3>
                                             </div>
                                         </div>
                                     </div>

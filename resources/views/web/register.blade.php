@@ -47,9 +47,16 @@
                      <h6 class="col-white"> Confirm Password </h6>
                      <input type="password" class="form-field5" name="password_confirmation" required>
                   </div>
+                    <input type="checkbox" class="form-control termc" name="terms" value="1"  required/>
+                  <span  class="col-white">Agree with the   <a href="{{URL::to('/public/storage')}}/term-condition/BSBTERMSCONDITIONS.pdf" class="col-white">&nbsp;terms and conditions</a> <span>
+                     {{--  <input type="submit" value="SIGN UP" class="submit-btn3" name="">  --}}
+                  </div>
                   <div class="form-label5 m-t-20">
                      <input type="submit" value="SIGN UP" class="submit-btn3" name="">
                   </div>
+                   <div >
+                 
+                  
                </form>
             </div>   
          </div>

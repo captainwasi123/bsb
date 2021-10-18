@@ -197,8 +197,8 @@
            <div class="col-md-4 col-lg-4 col-sm-4 col-12 no-pad">
               <div class="pricing-box">
                  <div class="pricing-box-head">
-                    <h6> Vendor side </h6>
-                    <h5> Exclusive Experience </h5>
+                    <h4> Basic </h4>
+                    {{--  <h5> Exclusive Experience </h5>  --}}
                     <h4> $40 </h4>
                  </div>
                  <div class="pricing-box-features">
@@ -237,7 +237,7 @@
            <div class="col-md-4 col-lg-4 col-sm-4 col-12 no-pad">
               <div class="pricing-box bg-yellow active">
                  <div class="pricing-box-head">
-                    <h5 class="col-white"> Consumer Side </h5>
+                    <h4 class="col-white"> Customer</h4>
                     <h4 class="col-white"> $25 </h4>
                  </div>
                  <div class="pricing-box-features">
@@ -269,8 +269,8 @@
            <div class="col-md-4 col-lg-4 col-sm-4 col-12 no-pad">
               <div class="pricing-box">
                  <div class="pricing-box-head">
-                    <h6> Vendor side </h6>
-                    <h5> Exclusive Experience </h5>
+                    <h4> Exclusive</h4>
+                    {{--  <h5> Exclusive Experience </h5>  --}}
                     <h4> $20 </h4>
                  </div>
                  <div class="pricing-box-features">

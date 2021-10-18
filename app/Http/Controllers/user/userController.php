@@ -23,7 +23,7 @@ class userController extends Controller
     }
     public function memberPlan()
     {
-        $data =MU::latest()->limit(4)->get();;
+        $data = MU::latest()->limit(4)->get();;
 
         return view('user.membership.membership_plan',['data' => $data]);
     }

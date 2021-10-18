@@ -8,13 +8,20 @@ use App\Models\User;
 use App\Models\membership\Membership_user as MU;
 use App\Models\membership\Membership_vendor as MV;
 use Auth;
+use DB;
 
 class adminController extends Controller
 {
       //
     function index(){
 
-    	return view('admin.index');
+      $totaluser=User::all()->count();
+      $vendoruser=User::where('vendor_status',2)->count();
+      
+      
+    	return view('admin.index',['totaluser'=>$totaluser, 'vendoruser'=>$vendoruser]);
+
+    
     }
 
     function vendorNew(){

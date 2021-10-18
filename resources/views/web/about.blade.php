@@ -46,7 +46,7 @@
                   </div>
                   <div class="team-info">
                      <h6> <b>    A'MeraFrieman </b> <br/> <b> Chief Development Officer </b> </h6>
-                     <h5> 
+                     <h5>
                         <a href=""> <i class="fab fa-facebook-f"> </i> </a>
                         <a href=""> <i class="fab fa-twitter"> </i> </a>
                         <a href=""> <i class="fab fa-instagram"> </i> </a>
@@ -61,7 +61,7 @@
                   </div>
                   <div class="team-info">
                      <h6> <b> Meko Krout</b> <br/> <b> Chief Administrative Officer </b> </h6>
-                     <h5> 
+                     <h5>
                         <a href=""> <i class="fab fa-facebook-f"> </i> </a>
                         <a href=""> <i class="fab fa-twitter"> </i> </a>
                         <a href=""> <i class="fab fa-instagram"> </i> </a>
@@ -76,7 +76,7 @@
                   </div>
                   <div class="team-info">
                      <h6> <b> Natalia Carey </b> <br/> <b> Chief Engagement Officer </b> </h6>
-                     <h5> 
+                     <h5>
                         <a href=""> <i class="fab fa-facebook-f"> </i> </a>
                         <a href=""> <i class="fab fa-twitter"> </i> </a>
                         <a href=""> <i class="fab fa-instagram"> </i> </a>
@@ -88,8 +88,8 @@
 
          <div class="row">
           <div class="col-md-12 col-lg-12 col-12 text-center">
-         <a href="" class="custom-btn1 m-t-40"> Become A BSB Collaborative LLC Exclusive Member </a>
-          </div>  
+         <a href="{{route('web.register')}}" class="custom-btn1 m-t-40"> Become A BSB Collaborative LLC Exclusive Member </a>
+          </div>
          </div>
       </div>
    </section>
@@ -128,7 +128,8 @@
             </div>
             <div class="col-md-6 col-lg-6 col-sm-12 col-12">
                <div class="contact-map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.2889612081344!2d-0.08991633469162817!3d51.507914468487265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876035159bb13c5%3A0xa61e28267c3563ac!2sLondon%20Bridge!5e0!3m2!1sen!2s!4v1627642578547!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.815973795637!2d-96.45383604879515!3d32.90303348476184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864eaa7c8ac8551b%3A0x39fa8d93c676c719!2sStaples!5e0!3m2!1sen!2s!4v1634565003466!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  {{--  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.2889612081344!2d-0.08991633469162817!3d51.507914468487265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876035159bb13c5%3A0xa61e28267c3563ac!2sLondon%20Bridge!5e0!3m2!1sen!2s!4v1627642578547!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>  --}}
                </div>
             </div>
          </div>

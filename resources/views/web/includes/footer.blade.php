@@ -1,16 +1,49 @@
-<footer class="footer-1">
-   <div class="container">
-      <div class="footer-logo">
-         <a href=""> <img src="{{URL::to('/public/website')}}/images/logo.png"> </a>
-      </div>
-      <div class="footer-social">
-         <a href=""> <img src="{{URL::to('/public/website')}}/images/fb-icon.jpg"> Facebook  </a>
-         <a href=""> <img src="{{URL::to('/public/website')}}/images/twitter-icon.jpg"> Twitter  </a>
-         <a href=""> <img src="{{URL::to('/public/website')}}/images/linkedin-icon.jpg"> LinkedIn </a>
-         <a href=""> <img src="{{URL::to('/public/website')}}/images/insta-icon.jpg"> Instagram  </a>
-      </div>
-   </div>
-   <div class="copyrights-sec">
+
+<!-- Footer Section Starts Here -->
+        <footer class="footer-2">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-lg-4 col-sm-12 col-12">
+                  <div class="footer-logo2">
+                     <a href=""> <img src="{{URL::to('/public/website')}}/images/logo.png"> </a>
+                     <p> BSB Collaborative LLC </p>
+                     <p> We All Rise When We All Thrive. </p>
+                  </div>
+               </div>
+               <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+                  <div class="footer-list2">
+                     <h3 class="col-white"> <b></b> QUICK LINKS </h3>
+                     <ul>
+                        <li>  <a href="{{route('web.index')}}"> HOME </a> </li>
+                       <li>   <a href="{{route('web.about')}}"> ABOUT US </a></li>
+                        <li>  <a href="{{route('web.categories')}}"> CATEGORIES </a> </li>
+                        <li>  <a href="{{route('web.physical_box')}}"> PHYSICAL BOX </a> </li>
+                         <li>  <a href="{{URL::to('/public/storage')}}/term-condition/BSBPrivacyPolicy.pdf"> PRIVACY POLICY </a> </li>
+                     </ul>
+                  </div>
+                  <div class="footer-list2">
+                     <h3 class="col-white"> <b></b> SOCIAL MEDIA </h3>
+                     <ul>
+                        <li> <a href=""> <b> Address: </b>   1009 E INTERSTATE 30, <br/> NUM 1006 ROCKWALL, <br/> TX 75087 </a> 
+                        </li>
+                        <li> <a href=""> <b> Phone: </b>    (813) 497-1101  </a> </li>
+                        <li> <a href=""> <b> Email: </b> bsb@gmail.com  </a> </li>
+                     </ul>
+                  </div>
+                  <div class="footer-list2">
+                     <h3 class="col-white"> <b></b> OUR ADDRESS </h3>
+                     <ul>
+                        <li>  <a href=""> <img src="{{URL::to('/public/website')}}/images/fb-icon.jpg"> Facebook  </a> </li>
+                        <li> <a href=""> <img src="{{URL::to('/public/website')}}/images/twitter-icon.jpg"> Twitter  </a> </li>
+                        <li>   <a href=""> <img src="{{URL::to('/public/website')}}/images/linkedin-icon.jpg"> LinkedIn </a> </li>
+                      <li>  <a href=""> <img src="{{URL::to('/public/website')}}/images/insta-icon.jpg"> Instagram  </a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+          <div class="copyrights-sec">
       <span> 2021 © All rights reserved by BSB </span>
    </div>
-</footer>
+      </footer>
+      <!-- Footer Section Starts Here -->

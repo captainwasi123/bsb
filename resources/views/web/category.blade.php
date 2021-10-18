@@ -19,14 +19,14 @@
          </div>
          <div class="feature-slider no-arrows">
             @foreach ($users as $key =>$val )
-            
+
             <div>
                <div class="products-box">
                   <div class="product-image">
                     <center> <img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"> </center>
                   </div>
                   <div class="product-title" >
-                  
+
                      {{--  <span class="cut-text"> {{$val->email}} </span><br>
                      <span class="cut-text"> {{$val->business_name}} </span><br>
                      <span class="cut-text">{{@$val->city}} <small>{{@$val->country->country}}</small>  </span><br>  --}}
@@ -48,7 +48,7 @@
 
                   </div>
                </div>
-             
+
             @endforeach
 
             @if(count($users) == '0')
@@ -57,7 +57,7 @@
                 </div>
              @endif
 
-             
+
          </div>
       </div>
    </section>
@@ -88,7 +88,7 @@
                               @else
                              <i class="material-icons md-18"> favorite</i>
                               @endif
-                           </a>
+                           </a> 
                         @endif
                      </div>
                      <div class="product-tag4">
