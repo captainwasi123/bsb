@@ -24,7 +24,7 @@
                   <div class="footer-list2">
                      <h3 class="col-white"> <b></b> SOCIAL MEDIA </h3>
                      <ul>
-                        <li> <a href=""> <b> Address: </b>   1009 E INTERSTATE 30, <br/> NUM 1006 ROCKWALL, <br/> TX 75087 </a> 
+                        <li> <a href="https://www.google.com/maps/place/Staples/@32.9030335,-96.453836,17z/data=!3m2!4b1!5s0x864eaa7d42ce6aad:0xe8c76fea383042e0!4m5!3m4!1s0x864eaa7c8ac8551b:0x39fa8d93c676c719!8m2!3d32.903029!4d-96.451642" target="_blank"> <b> Address: </b>   1009 E INTERSTATE 30, <br/> NUM 1006 ROCKWALL, <br/> TX 75087 </a> 
                         </li>
                         <li> <a href=""> <b> Phone: </b>    (813) 497-1101  </a> </li>
                         <li> <a href=""> <b> Email: </b> bsb@gmail.com  </a> </li>
