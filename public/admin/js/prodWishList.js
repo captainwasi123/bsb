@@ -6,7 +6,7 @@ $(document).ready(function() {
     $(document).on('click', '.deleteWishlistProduct', function() {
         var id = $(this).data('id');
         if (confirm('Are you sure want to Delete this?')) {
-            window.location.href = host + '/user/delete/' + id;
+            window.location.href = host + '/user/deleted/' + id;
         }
     });
 

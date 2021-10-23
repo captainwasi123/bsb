@@ -115,7 +115,7 @@
 
             @if(count($users) == '0')
                 <div class="col-md-12">
-                   <h4 class="not-found">No Products Available.</h4>
+                   <h4 class="not-found">No Featured Vendors Available.</h4>
                 </div>
              @endif
 

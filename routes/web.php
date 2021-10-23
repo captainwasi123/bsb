@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/membership/status', 'userController@memberStatus')->name('user.membership.memberStatus');
 
         Route::get('/whishlist/product', 'userController@whishlistProduct')->name('user.whishlist.whishlistProduct');
-        Route::get('delete/{id}', 'userController@deleteWishlistProduct');
+        Route::get('/deleted/{id}', 'userController@deleteWishlistProduct');
 
         Route::get('/whishlist/vendors', 'userController@whishlistVendors')->name('user.whishlist.whishlistVendors');
         Route::get('delete/{id}', 'userController@deletewhishlistVendors');

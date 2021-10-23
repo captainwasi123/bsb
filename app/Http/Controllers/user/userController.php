@@ -69,6 +69,8 @@ class userController extends Controller
 
         return redirect()->back()->with('success', 'Product Deleted Successfully.');
     }
+
+
     public function whishlistVendors()
     {
         $data=FVENDR::where('user_id', Auth::id())->get();
