@@ -69,34 +69,44 @@
             <h3> Featured Products </h3>
          </div>
          <div class="row">
-            @foreach($products as $key => $val)
-               <div class="col-md-4 col-lg-4 col-sm-6 col-12">
-                  <div class="product-box4">
-                     <div class="product-image4">
-                        <img src="{{URL::to('/public/storage/product/'.$val->image)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';">
-                     </div>
-                     <div class="product-title4">
-                        <h4> {{$val->title}}<br><small>{{@$val->category->name}}</small></h4>
-                        <p class="cut-text"> {{$val->description}} </p>
-                     </div>
-                     <div class="product-btn2">
-                           <a href="{{$val->product_url}}" target="_blank"> Buy Now </a>
-                        @if(Auth::check())
-                           <a href="javascript:void(0)" class="btn btn-success gold-b favproduct"  data-id="{{base64_encode($val->id)}}">
-                              @if(empty($val->favprod->id))
-                              <i class="material-icons md-18"> favorite_border </i>
-                              @else
-                             <i class="material-icons md-18"> favorite</i>
-                              @endif
-                           </a> 
-                        @endif
-                     </div>
-                     <div class="product-tag4">
-                        SPECIAL OFFER
+      @foreach($users as $key => $value) 
+    @php $i=0; @endphp
+     @foreach($products as $key => $val)  
+            @if($val->seller_id == $value->id)
+               @if($i<4)       
+                  <div class="col-md-4 col-lg-4 col-sm-6 col-12">
+                     <div class="product-box4">
+                        <div class="product-image4">
+                           <img src="{{URL::to('/public/storage/product/'.$val->image)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';">
+                        </div>
+                        <div class="product-title4">
+                           <h4> {{$val->title}}<br><small>{{@$val->category->name}} </small></h4>
+                           <p class="cut-text"> {{$val->description}} </p>
+                        </div>
+                        <div class="product-btn2">
+                              <a href="{{$val->product_url}}" target="_blank"> Buy Now </a>
+                           @if(Auth::check())
+                              <a href="javascript:void(0)" class="btn btn-success gold-b favproduct"  data-id="{{base64_encode($val->id)}}">
+                                 @if(empty($val->favprod->id))
+                                 <i class="material-icons md-18"> favorite_border </i>
+                                 @else
+                                <i class="material-icons md-18"> favorite</i>
+                                 @endif
+                              </a> 
+                           @endif
+                        </div>
+                        <div class="product-tag4">
+                           SPECIAL OFFER
+                        </div>
                      </div>
                   </div>
-               </div>
-            @endforeach
+                  @php $i++; @endphp
+               @endif
+            @endif
+ 
+         @endforeach
+        
+      @endforeach
             @if(count($products) == '0')
                <div class="col-md-12">
                   <h4 class="not-found">No Products Available.</h4>

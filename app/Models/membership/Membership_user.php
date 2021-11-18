@@ -13,7 +13,7 @@ class Membership_user extends Model
     protected $table ='tbl_membership_user';
 
    
-
+ 
     public function UserMPDescr()
     {
         return $this->hasMany(UMPD::class, 'membership_user_id' , 'id'  );

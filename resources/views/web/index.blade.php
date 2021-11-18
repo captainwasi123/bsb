@@ -81,14 +81,14 @@
 
       <div class="feature-slider no-arrows">
             @foreach ($users as $key =>$val )
-            
+
             <div>
                <div class="products-box">
                   <div class="product-image">
                     <center> <img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"> </center>
                   </div>
                   <div class="product-title" >
-                  
+
                      {{--  <span class="cut-text"> {{$val->email}} </span><br>
                      <span class="cut-text"> {{$val->business_name}} </span><br>
                      <span class="cut-text">{{@$val->city}} <small>{{@$val->country->country}}</small>  </span><br>  --}}
@@ -110,7 +110,7 @@
 
                   </div>
                </div>
-             
+
             @endforeach
 
             @if(count($users) == '0')
@@ -119,7 +119,7 @@
                 </div>
              @endif
 
-             
+
          </div>
      </div>
   </section>
@@ -226,7 +226,7 @@
 
                     @if(Auth::check('vendor_status',2))
                     <a href="{{url('vendr/virtual/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
-                      
+
                     @else
                     <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
 
@@ -258,7 +258,7 @@
                  <div class="pricing-box-button">
                    @if(Auth::check())
                     <a href="{{url('user/membership/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
-                      
+
                     @else
                     <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
 
@@ -292,7 +292,7 @@
                  <div class="pricing-box-button">
                     @if(Auth::check('vendor_status',2))
                     <a href="{{url('vendr/virtual/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
-                      
+
                     @else
                     <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
 

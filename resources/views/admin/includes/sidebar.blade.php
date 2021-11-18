@@ -38,11 +38,18 @@
                 <li><a href="{{route('admin.featured_member.memberCancel')}}">CANCELLED</a></li> 
                 <li><a href="{{route('admin.featured_member.memberBlocked')}}">BLOCKED</a></li> 
 
-                <li class="nav-small-cap">FEATURED PRODUCTS</li>
+                <li class="nav-small-cap"> PRODUCTS</li>
                 <li><a href="{{route('admin.featured_product.productPending')}}">PENDING</a></li> 
-                <li><a href="{{route('admin.featured_product.productPublish')}}">PUBLISHED</a></li> 
+                <li><a href="{{route('admin.featured_product.productPublish')}}">All APPROVE</a></li> 
                 <li><a href="{{route('admin.featured_product.productBlocked')}}">BLOCKED</a></li> 
 
+
+                <li class="nav-small-cap"> FEATURED PRODUCTS</li>
+                <li><a href="{{route('admin.featured_product.featproductPending')}}"> PENDING</a></li> 
+                <li><a href="{{route('admin.featured_product.featproductApprove')}}">All PPRODUCT</a></li> 
+                
+
+                
                 <li class="nav-small-cap">SETTING</li>
                 <li><a href="{{route('admin.setting.settingRole')}}">ADMIN ROLE</a></li> 
                 

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\sendMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +34,11 @@ use Illuminate\Support\Facades\Route;
 
         Route::post('login', 'webController@loginSubmit');
         Route::post('register', 'webController@registerSubmit');
+      
+        
     });
-
+    // Email sent
+    Route::get('send-mail','MailController@send')->name('mail.sendMail');
 
 
 
@@ -93,11 +98,26 @@ use Illuminate\Support\Facades\Route;
                 Route::get('delete/{id}', 'productController@deleteProduct');
                 Route::get('edit/{id}', 'productController@editProduct')->name('vendor.product.edit');
                 Route::post('update', 'productController@updateProduct')->name('vendor.product.update');
+
+                
+
+                // product feature 
+                Route::get('FeaturProPending', 'productController@FeaturProPending')->name('vendor.product.FeaturProPending');
+                Route::get('FeatureProApprove', 'productController@FeatureProApprove')->name('vendor.product.FeatureProApprove');
+                Route::get('FeatureProReject', 'productController@FeatureProReject')->name('vendor.product.FeatureProReject');
+             
+                
+                // Pro pendig status
+                Route::get('featureStatusPend/{id}/{status}', 'productController@featureprodStatus')->name('vendor.product.changeStatus');
+                Route::get('unfeaturePro/{id}/{status}', 'productController@unfeaturePro')->name('vendor.product.unfeaturePro');
+
             });
 
         Route::get('/virtual/plan', 'vendorController@memberPlan')->name('vendor.virtual.memberPlan');
         Route::get('/virtual/buyMV/{id}', 'vendorController@buyMembershipVonder');
         Route::get('/virtual/status', 'vendorController@memberStatus')->name('vendor.virtual.memberStatus');
+        Route::get('cancelmembership/{id}/{status}', 'vendorController@cancelmembership')->name('vendor.virtual.cancelmembership');
+
     });
 
 
@@ -120,7 +140,9 @@ use Illuminate\Support\Facades\Route;
                 Route::get('blocked', 'adminController@vendorBlocked')->name('admin.vendor.vendorBlocked');
 
                 Route::get('changeStatus/{id}/{status}', 'adminController@changeStatus')->name('admin.vendor.changeStatus');
+               
                 Route::get('featureStatus/{id}/{status}', 'adminController@featureStatus')->name('admin.vendor.featureStatus');
+
 
             });
 
@@ -141,6 +163,17 @@ use Illuminate\Support\Facades\Route;
                 Route::get('blocked', 'productController@productBlocked')->name('admin.featured_product.productBlocked');
 
                 Route::get('changeStatus/{id}/{status}', 'productController@changeStatus')->name('admin.users.changeStatus');
+
+                // feature
+                Route::get('featproductPending', 'productController@featproductPending')->name('admin.featured_product.featproductPending');
+                Route::get('featproductApprove', 'productController@featproductApprove')->name('admin.featured_product.featproductApprove');
+                Route::get('changeFeatureStatus/{id}/{status}', 'productController@changeFeatureStatus')->name('admin.users.changeFeatureStatus');
+                Route::get('cancelFeaPro/{id}/{status}', 'productController@cancelFeaPro')->name('admin.users.cancelFeaPro');
+                Route::get('rejectFeaPro/{id}/{status}', 'productController@rejectFeaPro')->name('admin.users.rejectFeaPro');
+
+                
+               
+
             });
 
             Route::get('/setting/role', 'adminController@settingRole')->name('admin.setting.settingRole');

@@ -44,14 +44,14 @@ class webController extends Controller
     function favVender($id)
     {
        $id=base64_decode($id);
-    
+
        $data=FVENDR::where(['user_id' => Auth::id(), 'vendor_id' => $id])->first();
-     
+
         if(empty($data->id)){
 
             $fv= new FVENDR;
             $fv->user_id=Auth::id();
-            $fv->vendor_id=$id; 
+            $fv->vendor_id=$id;
             $fv->save();
 
             return '1';
@@ -76,20 +76,20 @@ class webController extends Controller
 
         return view('web.categories');
     }
+
     function category($id, $name){
+
         $id = base64_decode($id);
         $data['category'] = categories::find($id);
-        $data['products'] = product::where('category_id', $id)->where('status', '1')->latest()->limit(6)->get();
-        $data['users'] =User::where('is_feature',1)->latest()->limit(6)->get();
-
-
+        $data['products'] = product::where('category_id', $id)->where('is_featured', '1')->get();
+        $data['users'] =User::where('vendor_status',2)->latest()->take(6)->get();
+        // $data['users'] =User::where('is_feature',1)->latest()->limit(6)->get();
         return view('web.category')->with($data);
-
     }
 
     function physicalBox(){
 
-        return view('web.physicalBox'); 
+        return view('web.physicalBox');
     }
 
 

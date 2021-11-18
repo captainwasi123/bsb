@@ -33,8 +33,55 @@ class productController extends Controller
 
       $user= product::find(base64_decode($id));
       $user->status = $status;
+      $user->is_featured=4;
       $user->save();
 
       return redirect()->back()->with('success', 'Product Status Updated.');
     }
+
+    // feature product
+
+    function featproductPending(){
+        $data['products'] = product::where('is_featured', '0')->latest()->get();
+
+        return view('admin.featured_product.feature_pending_product')->with($data);
+    }
+
+    function featproductApprove(){
+        $data['products'] = product::where('is_featured', '1')->latest()->get();
+
+        return view('admin.featured_product.feature_all_product')->with($data);
+    }
+
+     function changeFeatureStatus($id, $status){
+
+        $user= product::find(base64_decode($id));
+        $user->is_featured=$status;
+        $user->save();
+  
+        return redirect()->back()->with('success', 'Product Status Updated.');
+      }
+
+      function cancelFeaPro($id, $status){
+
+        $user= product::find(base64_decode($id));
+        $user->is_featured=$status;
+        $user->save();
+  
+        return redirect()->back()->with('success', 'Product Status Updated.');
+      }
+
+      
+      function rejectFeaPro($id, $status){
+
+        $user= product::find(base64_decode($id));
+        $user->is_featured=$status;
+        $user->save();
+  
+        return redirect()->back()->with('success', 'Product Status Updated.');
+      }
+
+      
+
+      
 }

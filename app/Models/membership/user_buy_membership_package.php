@@ -20,7 +20,7 @@ class user_buy_membership_package extends Model
 
     public function membershipUser()
     {
-        return $this->belongsTo(MU::class, 'membership_user_id', 'id');
+        return $this->belongsTo(MU::class, 'id', 'membership_user_id');
     }
 
 

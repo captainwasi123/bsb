@@ -33,6 +33,11 @@
                 <li><a href="{{route('vendor.product.approveProduct')}}">APPROVE</a></li>
                 <li><a href="{{route('vendor.product.rejectProduct')}}">REJECTED</a></li>
 
+                  <li class="nav-small-cap">FEATURE PRODUCTS</li>
+                <li><a href="{{route('vendor.product.FeaturProPending')}}">PENDING</a></li>
+                <li><a href="{{route('vendor.product.FeatureProApprove')}}">APPROVE</a></li>             
+                <li><a href="{{route('vendor.product.FeatureProReject')}}">REJECTED</a></li>
+
                 <li class="nav-small-cap">VIRTUAL BOX</li>
                 <li><a href="{{route('vendor.virtual.memberPlan')}}">MEMBERSHIP PLAN</a></li> 
                 <li><a href="{{route('vendor.virtual.memberStatus')}}">MEMBERSHIP STATUS</a></li> 

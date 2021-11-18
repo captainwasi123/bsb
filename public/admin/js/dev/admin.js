@@ -71,7 +71,7 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', '.publishProduct', function() {
+    $(document).on('click', '.approveProduct', function() {
         var vendor_status = 1;
         var product_id = $(this).data('id');
 
@@ -79,4 +79,43 @@ $(document).ready(function() {
             window.location.href = host + "/product/changeStatus/" + product_id + "/" + vendor_status;
         }
     });
+
+    // feature product
+    $(document).on('click', '.approveFeautreProduct', function() {
+        var feature_status = 1;
+        var product_id = $(this).data('id');
+
+        if (confirm('Are you sure want to change status?')) {
+            window.location.href = host + "/product/changeFeatureStatus/" + product_id + "/" + feature_status;
+        }
+    });
+
+       $(document).on('click', '.rejectFeautreProduct', function() {
+        var feature_status = 2;
+        var product_id = $(this).data('id');
+
+        if (confirm('Are you sure want to change status?')) {
+            window.location.href = host + "/product/changeStatus/" + product_id + "/" + feature_status;
+        }
+    });
+    
+
+    $(document).on('click', '.cancelFeaPro', function() {
+        var feature_status = 4;
+        var product_id = $(this).data('id');
+
+        if (confirm('Are you sure want to change status?')) {
+            window.location.href = host + "/product/cancelFeaPro/" + product_id + "/" + feature_status;
+        }
+    });
+    
+    $(document).on('click', '.rejectFeaPro', function() {
+        var feature_status = 3;
+        var product_id = $(this).data('id');
+
+        if (confirm('Are you sure want to change status?')) {
+            window.location.href = host + "/product/cancelFeaPro/" + product_id + "/" + feature_status;
+        }
+    });
+
 })

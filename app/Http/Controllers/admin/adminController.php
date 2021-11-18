@@ -19,7 +19,7 @@ class adminController extends Controller
       $vendoruser=User::where('vendor_status',2)->count();
       
       
-    	return view('admin.index',['totaluser'=>$totaluser, 'vendoruser'=>$vendoruser]);
+    	return view('admin.index',['totaluser' => $totaluser, 'vendoruser' => $vendoruser]);
 
     
     }

@@ -33,6 +33,9 @@
                                                 <th>BUY DATe</th>
                                                 <th>EXPIRY DATE</th>
                                                 <th>STATUS</th>
+                                                <th>Action</th>
+
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -54,8 +57,17 @@
                                             @case('2')
                                                 <label class="label label-danger">Expired</label>
                                                 @break
+                                            @case('5')
+                                            <label class="label label-danger">Cancel</label>
+
 
                                         @endswitch
+                                    </td>
+
+                                    <td>
+                                    @if($val->status!=2 && $val->status!=5)
+                        <a href="javascript:void(0)" class="btn btn-success gold-b cancelmembership" title="Cancel" data-id="{{base64_encode($val->id)}}"><i class="fa fa-trash"></i></a>
+                                    @endif
                                     </td>
                                 </tr>
                             @endforeach                                      

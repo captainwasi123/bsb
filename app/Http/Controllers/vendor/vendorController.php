@@ -106,4 +106,16 @@ class vendorController extends Controller
     	return view('vendor.virtual.member_status',['data'=> $data]);
     }
 
+
+   
+    function cancelmembership($id, $status){
+
+        $pro= BuyMP::find(base64_decode($id));
+
+        $pro->status=$status;
+        $pro->save();
+
+        return redirect()->back()->with('success', 'MemberShip cancelled.');
+    }
+
 }

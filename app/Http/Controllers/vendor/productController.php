@@ -36,7 +36,7 @@ class productController extends Controller
 
 
     function allProduct(){
-        $data = product::where('seller_id', Auth::id())->latest()->get();
+        $data = product::where('seller_id', Auth::id())->Where('is_featured', 4)->latest()->get();
 
         return view('vendor.product.all_product', ['data' => $data]);
     }
@@ -94,4 +94,58 @@ class productController extends Controller
         }
         return redirect()->back()->with('success', 'Product Updated Successfully.');
     }
+
+    // for feature
+
+            function featureprodStatus($id, $status){
+
+                $pro= product::find(base64_decode($id));
+        
+                $pro->is_featured=$status;
+                $pro->save();
+        
+                return redirect()->back()->with('success', 'Product For Feature .');
+            }
+
+            function unfeaturePro($id, $status){
+
+                $pro= product::find(base64_decode($id));
+        
+                $pro->is_featured=$status;
+                $pro->save();
+        
+                return redirect()->back()->with('success', 'Product For Feature .');
+            }
+
+            
+     
+
+            function FeaturProPending(){
+            
+                $data = product::where('seller_id', Auth::id())
+                ->Where('is_featured', 0)->get();
+            
+                return view('vendor.product.FeaturProPending', ['data' => $data]);
+            }
+
+            
+            function FeatureProApprove(){
+            
+                $data = product::where('seller_id', Auth::id())
+                ->Where('is_featured', 1)->get();
+            
+                return view('vendor.product.FeatureProApprove', ['data' => $data]);
+            }
+
+            function FeatureProReject(){
+            
+                $data = product::where('seller_id', Auth::id())
+                ->Where('is_featured', 3)->get();
+            
+                return view('vendor.product.FeatureProReject', ['data' => $data]);
+            }
+
+            
+
+           
 }

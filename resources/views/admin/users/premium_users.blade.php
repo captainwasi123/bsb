@@ -19,7 +19,7 @@
                                                 <th>REG AT</th>
                                                 <th>MEMBERSHIP</th>
                                                 <th>MEMBERSHIP STATUS</th>
-                                               
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -32,8 +32,8 @@
                                     <td>{{@$val->user->email}}</td>
                                     <td>{{@$val->user->country->country}}</td>
                                     <td>{{@$val->user->created_at}}</td>
-                                    <td>{{@$val->membershipUser->package_name}}</td>
-                                     
+                                    <td>{{@$val[0]->membershipUser->package_name}}</td>
+                                     }
                                       <td>
                                         @switch($val->status)
                                             @case('1')
@@ -51,7 +51,7 @@
 
 
                                 </tr>
-                            @endforeach                                                
+                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

@@ -115,7 +115,7 @@
                                                     <textarea class="form-control" rows="5" cols="40" name="description">{{Auth::user()->description}}</textarea>
                                                 </div>
                                             </div>
-                                            <!--/span-->s
+                                            <!--/span-->
                                         </div>
                                         <!--/row-->
                                     </div>

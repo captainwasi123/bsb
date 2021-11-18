@@ -1,26 +1,12 @@
 @extends('admin.includes.master')
-@section('title', 'Pending Products')
+@section('title', 'Publish Products')
 @section('content')
        
 <!-- Row -->
     <div class="card-group">
         <div class="card">
           <div class="card-body">
-                <h3 class="card-title">Products > Pending</h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        @if(session()->has('success'))
-                            <div class="alert alert-success">
-                                {{ session()->get('success') }}
-                            </div>
-                        @endif
-                        @if(session()->has('error'))
-                            <div class="alert alert-danger">
-                                {{ session()->get('error') }}
-                            </div>
-                        @endif
-                    </div>
-                </div>
+                <h3 class="card-title">Products > Publish</h3>
                 <div class="table-responsive m-t-20">
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
@@ -46,12 +32,11 @@
                                     <td><a href="{{$val->product_url}}" target="_blank"><i class="fa fa-link"></i> Link</a></td>
                                     <td>{{date('d-M-Y h:i A', strtotime($val->created_at))}}</td>                              
                                     <td class="p-l-0 p-r-0 action">
-                                        <a href="javascript:void(0)" class="btn btn-success gold-b approveProduct" data-id="{{base64_encode($val->id)}}" title="Publish"><i class="fa fa-globe"></i></a>
-
-                                        <a href="javascript:void(0)" class="btn btn-danger rejectProduct" data-id="{{base64_encode($val->id)}}" title="Reject"><i class="fa fa-close"></i></a>
+                                        <a href="javascript:void(0)" class="btn btn-danger cancelFeaPro" data-id="{{base64_encode($val->id)}}" title="Cancel"><i class="fa fa-ban"></i></a>
+                                        
                                     </td>                                                
                                 </tr>
-                            @endforeach                                            
+                            @endforeach                                              
                         </tbody>
                     </table>
                 </div>

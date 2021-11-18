@@ -1,12 +1,12 @@
-@extends('vendor.includes.master')
-@section('title', 'All Products')
+@extends('admin.includes.master')
+@section('title', 'Featur Pending Products')
 @section('content')
 
 <!-- Row -->
     <div class="card-group">
         <div class="card">
           <div class="card-body">
-                <h3 class="card-title">Products > All</h3>
+                <h3 class="card-title">Products > Pending</h3>
                 <div class="row">
                     <div class="col-md-6">
                         @if(session()->has('success'))
@@ -25,44 +25,32 @@
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>S.NO</th>
+                                <th>#</th>
                                 <th>IMAGE</th>
                                 <th>NAME</th>
                                 <th>PRICE</th>
                                 <th>CATAGORY</th>
                                 <th>LINK</th>
-                                <th>STATUS</th>
-                            
+                                <th>CREATED AT</th>
+                                <th>ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($data as $key => $val)
+                            @foreach($products as $key => $val)
                                 <tr>
                                     <td>{{++$key}}</td>
-                                    <td><img src="{{URL::to('/public/storage/product/'.$val->image)}}" width="60px"></td>
+                                    <td><img src="{{URL::to('/public/storage/product/'.$val->image)}}" width="50px"  onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"></td>
                                     <td>{{$val->title}}</td>
                                     <td>${{number_format($val->price, 1)}}</td>
                                     <td>{{@$val->category->name}}</td>
-                                    <td><a href="{{$val->product_url}}" target="_blank"><span class="fa fa-link"></span>&nbsp;Link</a></td>
-                                    <td>
-                                        @switch($val->status)
-                                            @case('0')
-                                                <label class="label label-info">Pending</label>
-                                                @break
+                                    <td><a href="{{$val->product_url}}" target="_blank"><i class="fa fa-link"></i> Link</a></td>
+                                    <td>{{date('d-M-Y h:i A', strtotime($val->created_at))}}</td>
+                                    <td class="p-l-0 p-r-0 action">
+                                        <a href="javascript:void(0)" class="btn btn-success gold-b approveFeautreProduct" data-id="{{base64_encode($val->id)}}" title="Apporve"><i class="fa fa-globe"></i></a>
 
-                                            @case('1')
-                                                <label class="label label-success">Approved</label>
-                                                @break
-
-                                            @case('2')
-                                                <label class="label label-danger">Rejected</label>
-                                                @break
-
-                                        @endswitch
+                                        <a href="javascript:void(0)" class="btn btn-danger rejectFeaPro" data-id="{{base64_encode($val->id)}}" title="Cancel"><i class="fa fa-close"></i></a>
                                     </td>
-                                   
                                 </tr>
-                               
                             @endforeach
                         </tbody>
                     </table>
@@ -81,5 +69,3 @@
     });
     </script>
 @endsection
-
-
