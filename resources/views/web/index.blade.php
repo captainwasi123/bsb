@@ -17,7 +17,7 @@
                  <h3 class="col-yellow"> The bsb Collaborative LLC
                  </h3>
                  <p class="col-white"> BSB Collaborative LLC is an online business that provides an engaging virtual space for Beautè Snob Boîte box subscribers with exclusive access to thousands of small and minority-owned entrepreneurs and businesses looking for collaboration and support in today’s retail space </p>
-                 <a href="#contact-us-sec" class="custom-btn1"> Register as Vendor </a>
+                 <a href="{{ url('register') }}" class="custom-btn1"> Register as Vendor </a>
               </div>
            </div>
         </div>
@@ -38,7 +38,7 @@
                  <h3 class="col-yellow"> Connecting Small Businesses To Their Ideal Customers </h3>
                  <p class="col-white"> BSB Collaborative LLC is one of the fastest-growing eCommerce stores in the digital space and is on a mission to help minority-owned and small businesses improve the visibility of their products, services, and online stores. </p>
                  <p class="col-white"> Through cross-marketing we collaborate with small businesses and give them access to a boutique of powerful marketing tools and potential buyers, increasing sales and their brand’s digital exposure. </p>
-                 <a href="" class="custom-btn1"> Know Our Story </a>
+                 <a href="{{ url('about') }}" class="custom-btn1"> Know Our Story </a>
                  <!-- <p class="collapse-text1 col-white"> BSB Collaborative LLC is an online business that provides an engaging virtual space for Beautè Snob Boîte box subscribers with exclusive access to thousands of small and minority-owned entrepreneurs and businesses looking for collaboration and support in today’s retail space  </p>
                  <a   class="custom-btn1 collapse-anchor1"> READ MORE </a> -->
               </div>
@@ -130,7 +130,7 @@
         <div class="row center-row">
            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
               <div class="experience-image">
-                 <img src="{{URL::to('/public/website')}}/images/product-big.jpg">
+                 <img src="{{URL::to('/public/website')}}/images/logo.png">
               </div>
            </div>
            <div class="col-md-6 col-lg-6 col-sm-6 col-12">
@@ -139,7 +139,7 @@
                     service with benefit
                  </h3>
                  <p class="col-white">From the comfort of your home or office, you can browse our large catalog of small and minority businesses while enjoying exclusive products delivered to your door in our signature black Beauty Snob Boxes </p>
-                 <a href="#contact-us-sec" class="custom-btn1"> READ MORE </a>
+                 <a href="{{ url('about') }}" class="custom-btn1"> READ MORE </a>
               </div>
            </div>
         </div>
@@ -238,7 +238,7 @@
               <div class="pricing-box bg-yellow active">
                  <div class="pricing-box-head">
                     <h4 class="col-white"> Customer</h4>
-                    <h4 class="col-white"> $25 </h4>
+                    <h4 class="col-white"> $36 </h4>
                  </div>
                  <div class="pricing-box-features">
                     <ul>
@@ -354,7 +354,7 @@
                     </div>
                  </div>
 
-                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                 <!-- <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                      <label class="package-radio">Select Packages: </label>
                     <div class="form-field">
                         <input type="radio" id="Vendorside40" name="fav_language" value="Vendorside40">
@@ -364,12 +364,12 @@
                         <input type="radio" id="Vendorside20" name="fav_language" value="Vendorside20">
                         <label for="Vendorside20" class="radio-text">Vendor side 20$</label>
                     </div>
-                 </div>
-                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                 </div> -->
+                 <!-- <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     <div class="form-field">
                        <textarea placeholder="Drop us a line! If you are a vendor, please fill out the form and click your package option." name="message" class="form-control1"></textarea>
                     </div>
-                 </div>
+                 </div> -->
                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     <div class="form-field">
                        <input type="submit" value="Send Message" class="submit-btn1" name="submit">

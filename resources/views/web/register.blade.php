@@ -50,7 +50,7 @@
                   <div class="form-label5">
                     <input type="checkbox" class="form-field5 termc" name="terms" value="1"  required>
                   <span  class="col-white"> By clicking Create Account, you agree to our 
-                  <a href="{{URL::to('/public/storage')}}/term-condition/BSBTERMSCONDITIONS.pdf" class="col-white"  target="_blank"><strong>Terms and Condition</strong></a>
+                  <a href="{{URL::to('/public/storage')}}/term-condition/BSBTERMSCONDITIONS.pdf" class="col-white"  target="_blank"><strong>Terms and Conditions</strong></a>
                       and 
                       <a href="{{URL::to('/public/storage')}}/term-condition/BSBPrivacyPolicy.pdf" class="col-white"  target="_blank"><strong>Privacy Policy</strong></a> </span>  
                      
