@@ -9,6 +9,7 @@ use App\Models\membership\Membership_user as MU;
 use App\Models\membership\Membership_vendor as MV;
 use Auth;
 use DB;
+use Carbon\Carbon;
 
 class adminController extends Controller
 {
@@ -92,6 +93,11 @@ class adminController extends Controller
     	return view('admin.featured_member.publish_member');
     }
     function memberExpired(){
+
+        $data = User::where('updated_at', '=', Carbon::now()->addDays(29)->toDateString())->get();
+        dd($data);
+        
+    return view('admin.featured_member.expired_member', ['data' => $data]);
 
     	return view('admin.featured_member.expired_member');
     }
