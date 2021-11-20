@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>bsb</title>
-</head>
+</head> 
 <body>
-    <h1>{{ $details['title'] }}</h1>
-    <p>{{ $details['body'] }}</p>
+    <h4>Hi {{ $name }},</h4>
+    <p>Please renew your Subscription before expiry</p>
    
     <p>Thank you</p>
 </body>

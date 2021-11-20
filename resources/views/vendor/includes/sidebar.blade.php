@@ -10,8 +10,11 @@
             </div>
             <!-- User profile text-->
             <div class="profile-text">
-                <h5>{{Auth::user()->name}}</h5>
-                <span>Vendor</span>
+                <h5>{{Auth::user()->name}}e</h5>
+      <a href="{{route('user.dashboard')}}" class="btn btn-rounded btn-primary btn-outlined" style="color:#fff !important;">
+                        User Dashboard
+                    </a>
+            
                 
             </div>
         </div>

@@ -38,12 +38,12 @@
                                         @foreach($data as $key => $val)
                                         <tr>
                                             <td>{{++$key}}</td>
-                                                 <td>{{@$val->user->name}}</td>
-                                    <td><img src="{{@URL::to('/public/admin/images/users/'.$val->user->image)}}" width="50px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>
+                                                 <td>{{@$val->favVender->name}}</td>
+                                    <td><img src="{{@URL::to('/public/admin/images/users/'.$val->favVender->image)}}" width="50px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>
 
-                                                  <td>{{@$val->user->country->country}}</td>
-                                                   <td>{{@$val->user->phone}}</td>
-                                                 <td>{{@$val->user->email}}</td>
+                                                  <td>{{@$val->favVender->country->country}}</td>
+                                                   <td>{{@$val->favVender->phone}}</td>
+                                                 <td>{{@$val->favVender->email}}</td>
                                                 
                                            
                                                 <td class="p-l-0 p-r-0 action">

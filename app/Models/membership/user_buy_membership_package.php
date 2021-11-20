@@ -18,11 +18,11 @@ class user_buy_membership_package extends Model
         return $this->belongsto(User::class, 'user_id', 'id'); 
     }
 
+
     public function membershipUser()
     {
-        return $this->belongsTo(MU::class, 'id', 'membership_user_id');
+        return $this->belongsTo(MU::class, 'membership_user_id', 'id');
     }
-
 
     
 

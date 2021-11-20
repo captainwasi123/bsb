@@ -4,6 +4,8 @@
 
     <div class="row">
         <div class="col-4">
+        
+     
             <div class="card-group">
                 <div class="card">
                     <div class="card-body">
@@ -126,4 +128,26 @@
         </div>
     </div>
 
+         @if(session()->has('success'))
+                                            <div class="alert alert-success">
+                                                <script>
+            $('#modal').on('shown.bs.modal', function () {
+            $('#exampleModalCenter').trigger('focus')
+            })
+
+            </script>
+                                                {{ session()->get('success') }}
+                                            </div>
+                                        @endif
+                                        @if(session()->has('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session()->get('error') }}
+                                            </div>
+                                        @endif
+
+
 @endsection
+ 
+   
+
+          

@@ -90,17 +90,19 @@ class adminController extends Controller
     }
     function memberPublish(){
 
-    	return view('admin.featured_member.publish_member');
+      $data = User::where('is_feature',2)->orderby('created_at', 'Desc')->get();
+      return view('admin.featured_member.publish_member', ['data' => $data]);
     }
+
     function memberExpired(){
+          
+        $now = Carbon::now()->subDays(25);
+        $data = User::where('is_feature',2)->whereDate('updated_at', '=',$now->toDateString())->orderby('created_at', 'Desc')->get();
+        return view('admin.featured_member.expired_member', ['data' => $data]);
 
-        $data = User::where('updated_at', '=', Carbon::now()->addDays(29)->toDateString())->get();
-        dd($data);
-        
-    return view('admin.featured_member.expired_member', ['data' => $data]);
 
-    	return view('admin.featured_member.expired_member');
     }
+
     function memberBlocked(){
 
     	return view('admin.featured_member.blocked_member');

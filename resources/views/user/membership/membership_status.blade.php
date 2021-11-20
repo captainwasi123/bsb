@@ -41,6 +41,7 @@
                                     <td>{{++$key}}</td>
                                     <td>{{$val->id}}</td>
                                     <td>{{@$val->user->name}}</td>
+                                    {{--  <td>{{@$val->membershipUser->package_name}}</td>  --}}
                                     <td>{{@$val->membershipUser->package_name}}</td>
                                     <td>{{$val->buy_date}}</td>
                                     <td>{{$val->expired_date}}</td>

@@ -197,7 +197,7 @@
            <div class="col-md-4 col-lg-4 col-sm-4 col-12 no-pad">
               <div class="pricing-box">
                  <div class="pricing-box-head">
-                    <h4> Basic </h4>
+                    <h4> Exclusive </h4>
                     {{--  <h5> Exclusive Experience </h5>  --}}
                     <h4> $40 </h4>
                  </div>
@@ -269,7 +269,7 @@
            <div class="col-md-4 col-lg-4 col-sm-4 col-12 no-pad">
               <div class="pricing-box">
                  <div class="pricing-box-head">
-                    <h4> Exclusive</h4>
+                    <h4> Basic</h4>
                     {{--  <h5> Exclusive Experience </h5>  --}}
                     <h4> $20 </h4>
                  </div>
