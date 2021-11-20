@@ -32,11 +32,9 @@
                 <li><a href="{{route('admin.users.usersBlocked')}}">BLOCKED</a></li> 
 
                 <li class="nav-small-cap">FEATURED MEMBERSHIP</li>
-                <li><a href="{{route('admin.featured_member.memberPending')}}">PENDING</a></li> 
+                <li><a href="{{route('admin.featured_member.memberPending')}}">Que</a></li> 
                 <li><a href="{{route('admin.featured_member.memberPublish')}}">PUBLISHED</a></li> 
                 <li><a href="{{route('admin.featured_member.memberExpired')}}">UPCOMING EXPIRED</a></li> 
-                <li><a href="{{route('admin.featured_member.memberCancel')}}">CANCELLED</a></li> 
-                <li><a href="{{route('admin.featured_member.memberBlocked')}}">BLOCKED</a></li> 
 
                 <li class="nav-small-cap"> PRODUCTS</li>
                 <li><a href="{{route('admin.featured_product.productPending')}}">PENDING</a></li> 

@@ -1,12 +1,12 @@
 @extends('admin.includes.master')
-@section('title', 'Pending Membership')
+@section('title', 'Membership in Que')
 @section('content')
        
 <!-- Row -->
     <div class="card-group">
         <div class="card">
           <div class="card-body">
-                                <h3 class="card-title">Membership > Pending</h3>
+                                <h3 class="card-title">Membership > Que</h3>
                                 <div class="table-responsive m-t-20">
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
@@ -19,43 +19,26 @@
                                                 <th>COUNTRY</th>
                                                 <th>WEBSITE LINK</th>
                                                 <th>DISCRIPTION</th>
-                                                <th>SELECTED PACKAGE</th>
                                                 <th>ACTION</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>DIVSNPIXEL</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>BROWN</td>                                
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><img src="https://divsnpixel.com/assets/images/logo.png" width="120px"></td>
-                                                <td>1</td>
-                                                <td>Anas</td>
-                                                <td>DIVSNPIXEL</td>
-                                                <td>ANAS@GMAIL.COM</td>
-                                                <td>PAKISTAN</td>
-                                                <td>https://divsnpixel.com/</td>
-                                                <td>BROWN</td>                                
-                                                <td class="p-l-0 p-r-0 action">
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-edit"></i> </button>
-                                                    <button type="submit" class="btn btn-success gold-b"><i class="fa fa-trash"></i></button>
-                                                </td>                                                
-                                            </tr>                                           
+                                          @foreach($vendor as $key => $val)
+                                              <tr>
+                                                  <td>{{++$key}}</td>
+                                                  <td><img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" width="50px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>
+                                                  <td>{{$val->name}}</td>
+                                                  <td>{{$val->business_name}}</td>
+                                                  <td>{{$val->email}}</td>
+                                                  <td>{{@$val->country->country}}</td>
+                                                  <td><a href="{{$val->website_link}}" target="_blank">{{$val->website_link}}</a></td>
+
+                                                  <td></td>
+                                                  <td class="p-l-0 p-r-0 action">
+                                                      <a href="javascript:void(0)" class="btn btn-success gold-b rejectVendor" data-id="{{base64_encode($val->id)}}"><i class="fa fa-ban"></i></a>
+                                                  </td> 
+                                              </tr>
+                                          @endforeach                                          
                                         </tbody>
                                     </table>
                                 </div>

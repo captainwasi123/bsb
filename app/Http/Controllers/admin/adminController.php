@@ -82,11 +82,15 @@ class adminController extends Controller
 
     function memberPending(){
 
-        $data =array([
-            'vendor' => MU::where('status',)
-        ]);
+        $data = array(
+            'vendor' => User::where('is_feature',2)
+                            ->whereHas('featured', function($q){
+                                return $q->where('start_date', null);
+                            })
+                            ->orderby('created_at', 'Desc')->get()
+        );
 
-    	return view('admin.featured_member.pending_member');
+    	return view('admin.featured_member.pending_member')->with($data);
     }
     function memberPublish(){
 

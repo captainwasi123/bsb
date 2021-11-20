@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Auth;
 use App\Models\membership\user_buy_membership_package as UBMP;
+use App\Models\membership\vendor_buy_membership_package as VBMP;
 use App\Models\countries;
 use App\Models\favourite_prod_user as fav;
 use App\Models\fav_vendor as FVEND;
@@ -106,6 +107,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo(FVEND::class, 'id', 'vendor_id')->where('user_id', Auth::id());
     }
+
+    public function featured()
+    {
+        return $this->belongsTo(VBMP::class, 'id', 'membership_vendor_id')->orderBy('created_at', 'DESC');
+    }
+
+
    
 
 
