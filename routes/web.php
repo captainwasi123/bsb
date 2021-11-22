@@ -48,7 +48,7 @@ use Illuminate\Support\Facades\Mail;
         Route::get('/', 'userController@index')->name('user.dashboard');
 
         Route::get('/membership/plan', 'userController@memberPlan')->name('user.membership.memberPlan');
-        Route::get('/membership/buyMU/{id}', 'userController@buyMembershipUser');
+        Route::post('/membership/buyMU/{id}', 'userController@buyMembershipUser');
         Route::get('/membership/status', 'userController@memberStatus')->name('user.membership.memberStatus');
 
         Route::get('/whishlist/product', 'userController@whishlistProduct')->name('user.whishlist.whishlistProduct');

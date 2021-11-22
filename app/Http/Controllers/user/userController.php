@@ -44,7 +44,7 @@ class userController extends Controller
         $mp->expired_date=date('Y-m-d', strtotime($date. ' + 30 days')); 
         $mp->buy_date=$date;
         
-        $mp->save();
+        $mp->update();
         return redirect()->back()->with('success', 'Membership Package has been bought Successfully.');
 
 
