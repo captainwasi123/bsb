@@ -39,14 +39,13 @@ use Illuminate\Support\Facades\Mail;
     });
 
 
-
 //User Dashboard
     Route::prefix('user')->namespace('user')->middleware('userAuth')->group(function(){
 
         Route::get('/', 'userController@index')->name('user.dashboard');
 
         Route::get('/membership/plan', 'userController@memberPlan')->name('user.membership.memberPlan');
-        Route::post('/membership/buyMU/{id}', 'userController@buyMembershipUser');
+        Route::post('/membership/buyMU', 'userController@buyMembershipUser')->name('user.membership.buyPlan');
         Route::get('/membership/status', 'userController@memberStatus')->name('user.membership.memberStatus');
 
         Route::get('/whishlist/product', 'userController@whishlistProduct')->name('user.whishlist.whishlistProduct');
@@ -63,6 +62,10 @@ use Illuminate\Support\Facades\Mail;
         Route::post('become_a_vendor', 'userController@becomeVendor')->name('user.become_a_vendor');
        
 
+
+        Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'paypalController@payWithPaypal',));
+        Route::post('paypal', array('as' => 'user.paypal','uses' => 'paypalController@postPaymentWithpaypal',));
+        Route::get('paypal', array('as' => 'user.status','uses' => 'paypalController@getPaymentStatus',));
 
     });
 

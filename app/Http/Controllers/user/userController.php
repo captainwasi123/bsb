@@ -28,9 +28,11 @@ class userController extends Controller
         return view('user.membership.membership_plan',['data' => $data]);
     }
 
-    public function buyMembershipUser( $id)
+    public function buyMembershipUser(Request $request)
     {
-        $id=base64_decode($id);
+        $data = $request->all();
+        //dd($data);
+        $id=base64_decode($data['pid']);
         $st = BuyMP::where('user_id', Auth::id())->update([
             'status' => '2'
         ]);
@@ -43,8 +45,7 @@ class userController extends Controller
         $mp->status=1;
         $mp->expired_date=date('Y-m-d', strtotime($date. ' + 30 days')); 
         $mp->buy_date=$date;
-        
-        $mp->update();
+        $mp->save();
         return redirect()->back()->with('success', 'Membership Package has been bought Successfully.');
 
 
