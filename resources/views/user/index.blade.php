@@ -127,25 +127,22 @@
             </div>
         </div>
     </div>
-
-         @if(session()->has('success'))
-                                            <div class="alert alert-success">
-                                                <script>
-            $('#modal').on('shown.bs.modal', function () {
-            $('#exampleModalCenter').trigger('focus')
-            })
-
-            </script>
-                                                {{ session()->get('success') }}
-                                            </div>
-                                        @endif
-                                        @if(session()->has('error'))
-                                            <div class="alert alert-danger">
-                                                {{ session()->get('error') }}
-                                            </div>
-                                        @endif
+                @if(session()->has('error'))
+                <div class="alert alert-danger">
+                {{ session()->get('error') }}
+                </div>
+                @endif
 
 
+@endsection
+@section('addScript')
+    @if(session()->has('success_modal'))
+        <script>
+            $(document).ready(function () {
+                $('#exampleModalCenter').modal('show')
+            });
+        </script>
+    @endif
 @endsection
  
    

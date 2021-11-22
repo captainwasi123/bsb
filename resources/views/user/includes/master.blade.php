@@ -93,6 +93,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     @include('user.includes.modal')
+    @include('user.includes.modal-popup')
         @include('user.includes.script')
         @yield('addScript')
 </body>

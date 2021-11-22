@@ -21,7 +21,7 @@
             @foreach ($users as $key =>$val )
 
             <div>
-               <div class="products-box">
+               <div class="products-box vender-box">
                   <div class="product-image">
                     <center> <img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"> </center>
                   </div>
@@ -53,7 +53,7 @@
 
             @if(count($users) == '0')
                 <div class="col-md-12">
-                   <h4 class="not-found">No Products Available.</h4>
+                   <h4 class="not-found">No Favourite Available.</h4>
                 </div>
              @endif
 

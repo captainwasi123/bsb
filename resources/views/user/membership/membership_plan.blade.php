@@ -52,8 +52,14 @@
                                 <hr style="background: #cb8819;">
                                 <div class="el-card-content">
                                    @foreach($val->UserMPDescr as $key => $value)
+                                        @if($value->addon == '1')
+                                            <input type="checkbox"  style="background: #cb8819;">
                                          <p><span><a><i class="fa fa-check">&nbsp;</i></a> {{ @$value->description}} Keywords</span></p>
                                         <hr style="background: #cb8819;">
+                                        @else
+                                         <p><span><a><i class="fa fa-check">&nbsp;</i></a> {{ @$value->description}} Keywords</span></p>
+                                        <hr style="background: #cb8819;">
+                                        @endif
                                     @endforeach
 
                                     

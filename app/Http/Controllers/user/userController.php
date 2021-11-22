@@ -153,7 +153,7 @@ class userController extends Controller
         $data = $request->all();
         User::becomeVendor($data);
 
-        return redirect()->back()->with('success', 'Request submitted.');
+        return redirect(route('user.dashboard'))->with('success_modal', 'Request submitted.');
     }
 
   

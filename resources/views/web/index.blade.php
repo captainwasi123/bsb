@@ -83,7 +83,7 @@
             @foreach ($users as $key =>$val )
 
             <div>
-               <div class="products-box">
+               <div class="products-box vender-box">
                   <div class="product-image">
                     <center> <img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" onerror="this.src='{{URL::to('/public/website')}}/images/product-placeholder.png';"> </center>
                   </div>
