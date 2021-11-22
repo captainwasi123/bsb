@@ -37,8 +37,6 @@ use Illuminate\Support\Facades\Mail;
       
         
     });
-    // Email sent
-    Route::get('send-mail','MailController@send')->name('mail.sendMail');
 
 
 
