@@ -41,6 +41,15 @@ $(document).ready(function() {
         }
     });
 
+
+    $(document).on('click', '.publishVendor', function() {
+        var user_id = $(this).data('id');
+
+        if (confirm('Are you sure want to publish this vendor?')) {
+            window.location.href = host + "/vendor/publish/" + user_id;
+        }
+    });
+
     //Users
 
     $(document).on('click', '.rejectUser', function() {

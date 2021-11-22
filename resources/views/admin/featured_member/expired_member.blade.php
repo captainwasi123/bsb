@@ -24,7 +24,7 @@
 
                 <div class="table-responsive m-t-20">
                     <table id="myTable" class="table table-bordered table-striped">
-                     <a href="{{route('mail.sendMail')}}" class="btn btn-success gold-b pull-right " data-id="">Send Email <i class="fa fa-envelope"></i></a>
+                     <a href="{{route('admin.featured_member.memberSendMail')}}" class="btn btn-success gold-b pull-right " data-id="">Send Email <i class="fa fa-envelope"></i></a>
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -35,13 +35,10 @@
                                 <th>EMAIL</th>
                                 <th>COUNTRY</th>
                                 <th>Subscription At</th>
-
-
-                                {{--  <th>ACTION</th>  --}}
                             </tr>
                         </thead>
                         <tbody>
-                          @foreach($data as $key => $val)
+                          @foreach($vendor as $key => $val)
                           <tr>
                               <td>{{++$key}}</td>
                               <td><img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" width="50px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>
@@ -52,12 +49,6 @@
                               <td>{{@$val->country->country}}</td>
 
                               <td>{{$val->updated_at->isoFormat('dddd D M Y') }}</td>
-                              {{--  <td class="p-l-0 p-r-0 action">
-                                  <a href="javascript:void(0)" class="btn btn-success gold-b rejectVendor" data-id="{{base64_encode($val->id)}}"><i class="fa fa-ban"></i></a>
-                                    @if($val->is_feature==2)
-                                    <a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="btn btn-success gold-b featureVendor"  data-toggle="tooltip" data-original-title="Feature Vendor"><i class="fa fa-check-circle"></i> </a>
-                                    @endif
-                              </td>  --}}
                           </tr>
                       @endforeach
 
