@@ -77,7 +77,7 @@ class adminController extends Controller
     function publishVendor($id){
         $start_date = date('Y-m-d');
         $end_date = date('Y-m-d', strtotime('+30 days', strtotime($start_date)));
-        $user=VBMP::where('user_id', base64_decode($id))->latest()->first();
+        $user=VBMP::where('user_id', base64_decode($id))->where('status',1)->latest()->first();
         $user->start_date = $start_date;
         $user->expired_date = $end_date;
         $user->save();

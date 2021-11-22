@@ -17,8 +17,15 @@ class webController extends Controller
 {
     //
     function index(){
+        $curr = date('Y-m-d');
         $data['categories'] =categories::all();
-        $data['users'] =User::where('is_feature',1)->latest()->limit(6)->get();
+        $data['users'] =User::where('is_feature',2)->whereHas('featured', function($q) use ($curr){
+            return $q->where('start_date', '<=', $curr)
+                        ->where('expired_date', '>=', $curr);
+        })
+        ->orderby('created_at', 'Desc')->take(6)->get();
+        
+      
 
 
         return view('web.index')->with($data);
@@ -78,11 +85,18 @@ class webController extends Controller
     }
 
     function category($id, $name){
-
+       
+        $curr = date('Y-m-d');
         $id = base64_decode($id);
         $data['category'] = categories::find($id);
         $data['products'] = product::where('category_id', $id)->where('is_featured', '1')->get();
-        $data['users'] =User::where('vendor_status',2)->latest()->take(6)->get();
+        $data['users'] =User::where('is_feature',2)->whereHas('featured', function($q) use ($curr){
+            return $q->where('start_date', '<=', $curr)
+                        ->where('expired_date', '>=', $curr);
+        })
+        ->orderby('created_at', 'Desc')->take(6)->get();
+        
+      
         // $data['users'] =User::where('is_feature',1)->latest()->limit(6)->get();
         return view('web.category')->with($data);
     }
