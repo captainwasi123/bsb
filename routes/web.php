@@ -143,6 +143,8 @@ use Illuminate\Support\Facades\Mail;
                
                 Route::get('featureStatus/{id}/{status}', 'adminController@featureStatus')->name('admin.vendor.featureStatus');
 
+                Route::get('publish/{id}', 'adminController@publishVendor');
+
 
             });
 
@@ -181,6 +183,7 @@ use Illuminate\Support\Facades\Mail;
             Route::get('/member/pending', 'adminController@memberPending')->name('admin.featured_member.memberPending');
             Route::get('/member/publish', 'adminController@memberPublish')->name('admin.featured_member.memberPublish');
             Route::get('/member/expired', 'adminController@memberExpired')->name('admin.featured_member.memberExpired');
+            Route::get('/member/sendMail', 'adminController@memberSendMail')->name('admin.featured_member.memberSendMail');
             Route::get('/member/blocked', 'adminController@memberBlocked')->name('admin.featured_member.memberBlocked');
             Route::get('/member/cancel', 'adminController@memberCancel')->name('admin.featured_member.memberCancel');
         });

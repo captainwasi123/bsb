@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                          @foreach($data as $key => $val)
+                          @foreach($vendor as $key => $val)
                           <tr>
                               <td>{{++$key}}</td>
                               <td><img src="{{URL::to('/public/storage/vendor/logo/'.$val->logo)}}" width="50px" onerror="this.src='{{URL::to('/public/admin')}}/images/users/placeholder.png';"></td>

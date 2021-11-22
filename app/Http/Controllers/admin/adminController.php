@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\membership\Membership_user as MU;
 use App\Models\membership\Membership_vendor as MV;
+use App\Models\membership\vendor_buy_membership_package as VBMP;
 use Auth;
 use DB;
 use Carbon\Carbon;
@@ -73,6 +74,17 @@ class adminController extends Controller
     }
 
 
+    function publishVendor($id){
+        $start_date = date('Y-m-d');
+        $end_date = date('Y-m-d', strtotime('+30 days', strtotime($start_date)));
+        $user=VBMP::where('user_id', base64_decode($id))->latest()->first();
+        $user->start_date = $start_date;
+        $user->expired_date = $end_date;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Vendor Published.');
+    }
+
 
 
     function settingRole(){
@@ -94,16 +106,61 @@ class adminController extends Controller
     }
     function memberPublish(){
 
-      $data = User::where('is_feature',2)->orderby('created_at', 'Desc')->get();
-      return view('admin.featured_member.publish_member', ['data' => $data]);
+        $curr = date('Y-m-d');
+        $data = array(
+            'vendor' => User::where('is_feature',2)
+                            ->whereHas('featured', function($q) use ($curr){
+                                return $q->where('start_date', '<=', $curr)
+                                            ->where('expired_date', '>=', $curr);
+                            })
+                            ->orderby('created_at', 'Desc')->get()
+        );
+      return view('admin.featured_member.publish_member')->with($data);
     }
 
     function memberExpired(){
           
-        $now = Carbon::now()->subDays(25);
-        $data = User::where('is_feature',2)->whereDate('updated_at', '=',$now->toDateString())->orderby('created_at', 'Desc')->get();
-        return view('admin.featured_member.expired_member', ['data' => $data]);
+        $curr = date('Y-m-d');
+        $validate = date('Y-m-d', strtotime('+5 days', strtotime($curr)));
+        $data = array(
+            'vendor' => User::where('is_feature',2)
+                            ->whereHas('featured', function($q) use ($validate){
+                                return $q->where('expired_date', $validate);
+                            })
+                            ->orderby('created_at', 'Desc')->get()
+        );
+        return view('admin.featured_member.expired_member')->with($data);
 
+
+    }
+
+     public function memberSendMail()
+    {
+
+        $curr = date('Y-m-d');
+        $validate = date('Y-m-d', strtotime('+5 days', strtotime($curr)));
+        $data = User::where('is_feature',2)
+                    ->whereHas('featured', function($q) use ($validate){
+                        return $q->where('expired_date', $validate);
+                    })
+                    ->orderby('created_at', 'Desc')->get();
+
+        foreach ($data as $val) {
+
+            $to_name = $val->name;
+            $to_email = $val->email;
+            $data = array("name"=>$val->name);
+            
+            Mail::send('mail.sendMail', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+            ->subject("Subscription Expiry Notification");
+            $message->from("Info@bsb.com","Test Mail");
+            });
+
+        }
+        return redirect()->back()->with('success', 'Email has been sent successfully');
+
+  
 
     }
 

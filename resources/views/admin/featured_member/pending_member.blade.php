@@ -33,9 +33,9 @@
                                                   <td>{{@$val->country->country}}</td>
                                                   <td><a href="{{$val->website_link}}" target="_blank">{{$val->website_link}}</a></td>
 
-                                                  <td></td>
+                                                  <td><p class="cut-text" title="{{$val->description}}">{{$val->description}}</p></td>
                                                   <td class="p-l-0 p-r-0 action">
-                                                      <a href="javascript:void(0)" class="btn btn-success gold-b rejectVendor" data-id="{{base64_encode($val->id)}}"><i class="fa fa-ban"></i></a>
+                                                      <a href="javascript:void(0)" class="btn btn-success gold-b publishVendor" data-id="{{base64_encode($val->id)}}"><i class="fa fa-globe"></i></a>
                                                   </td> 
                                               </tr>
                                           @endforeach                                          
