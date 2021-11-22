@@ -110,7 +110,7 @@ class User extends Authenticatable
 
     public function featured()
     {
-        return $this->belongsTo(VBMP::class, 'id', 'membership_vendor_id')->where('status', '1')->orderBy('created_at', 'DESC');
+        return $this->belongsTo(VBMP::class, 'id', 'user_id')->where('status', '1')->orderBy('created_at', 'DESC');
     }
 
 
