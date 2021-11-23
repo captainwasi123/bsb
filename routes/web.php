@@ -63,7 +63,6 @@ use Illuminate\Support\Facades\Mail;
        
 
 
-        Route::get('paywithpaypal', array('as' => 'paywithpaypal','uses' => 'paypalController@payWithPaypal',));
         Route::post('paypal', array('as' => 'user.paypal','uses' => 'paypalController@postPaymentWithpaypal',));
         Route::get('paypal', array('as' => 'user.status','uses' => 'paypalController@getPaymentStatus',));
 
@@ -74,6 +73,10 @@ use Illuminate\Support\Facades\Mail;
 
 
         Route::get('/', 'vendorController@index')->name('vendor.index');
+
+
+        Route::post('paypal', array('as' => 'vendor.paypal','uses' => 'paypalController@postPaymentWithpaypal',));
+        Route::get('paypal', array('as' => 'vendor.status','uses' => 'paypalController@getPaymentStatus',));
 
         //Profile
             Route::prefix('profile')->group(function(){

@@ -198,40 +198,43 @@
               <div class="pricing-box">
                  <div class="pricing-box-head">
                     <h4> Exclusive </h4>
-                    {{--  <h5> Exclusive Experience </h5>  --}}
                     <h4> $40 </h4>
                  </div>
-                 <div class="pricing-box-features">
-                    <ul>
-                       <li> <i class="fa fa-check"> </i>  Low Monthly Service fee </li>
-                       <li> <i class="fa fa-check"> </i>  List up to 4 products </li>
-                       <li> <i class="fa fa-check"> </i> Customer Buy direct from
-                          your website
-                       </li>
-                       <li> <i class="fa fa-check"> </i> No inventory fees  </li>
-                       <li> <i class="fa fa-check"> </i> No Profit Share  </li>
-                       <li> <i class="fa fa-check"> </i> Cross marketing with other
-                          vendor
-                       </li>
-                       <li> <i class="fa fa-check"> </i>  A Personalized Vendor Portal </li>
-                       <li> <i class="fa fa-check"> </i>  Business development training </li>
-                       <li> <i class="fa fa-check"> </i> Onsite Advertising Tools  </li>
-                       <li> <i class="fa fa-check"> </i>  Virtual BSB experience </li>
-                       <li> <i class="fa fa-check"> </i> Monthly drawing for Physical BSB
-                          add o Personalized vendor portal
-                       </li>
-                    </ul>
-                 </div>
-                 <div class="pricing-box-button">
+                  <form method="post" action="{!! URL::route('vendor.paypal') !!}">
+                     @csrf
+                     <input type="hidden" name="pid" value="MQ==">
+                     <div class="pricing-box-features">
+                       <ul>
+                          <li> <i class="fa fa-check"> </i>  Low Monthly Service fee </li>
+                          <li> <i class="fa fa-check"> </i>  List up to 4 products </li>
+                          <li> <i class="fa fa-check"> </i> Customer Buy direct from
+                             your website
+                          </li>
+                          <li> <i class="fa fa-check"> </i> No inventory fees  </li>
+                          <li> <i class="fa fa-check"> </i> No Profit Share  </li>
+                          <li> <i class="fa fa-check"> </i> Cross marketing with other
+                             vendor
+                          </li>
+                          <li> <i class="fa fa-check"> </i>  A Personalized Vendor Portal </li>
+                          <li> <i class="fa fa-check"> </i>  Business development training </li>
+                          <li> <i class="fa fa-check"> </i> Onsite Advertising Tools  </li>
+                          <li> <i class="fa fa-check"> </i>  Virtual BSB experience </li>
+                          <li> <i class="fa fa-check"> </i> Monthly drawing for Physical BSB
+                             add o Personalized vendor portal
+                          </li>
+                       </ul>
+                     </div>
+                     <div class="pricing-box-button">
 
-                    @if(Auth::check('vendor_status',2))
-                    <a href="{{url('vendr/virtual/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
+                       @if(Auth::check('vendor_status',2))
+                       <button class="custom-btn1"> DISCOVER NOW </a>
 
-                    @else
-                    <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
+                       @else
+                       <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
 
-                    @endif
-                 </div>
+                       @endif
+                     </div>
+                  </form>
               </div>
            </div>
            <div class="col-md-4 col-lg-4 col-sm-4 col-12 no-pad">
@@ -240,30 +243,44 @@
                     <h4 class="col-white"> Customer</h4>
                     <h4 class="col-white"> $36 </h4>
                  </div>
-                 <div class="pricing-box-features">
-                    <ul>
-                       <li class="col-white"> <i class="fa fa-check col-white"> </i>  Monthly Male  or Female Box  </li>
-                       <li class="col-white"> <i class="fa fa-check col-white"> </i> Recurring  Subscription w/30 day cancellation   </li>
-                       <li class="col-white"> <i class="fa fa-check col-white"> </i>  Access to over 10k business and services  </li>
-                       <li class="col-white"> <i class="fa fa-check col-white"> </i> Exclusive Customer experience Portal   </li>
-                       <li class="col-white"> <i class="fa fa-check col-white"> </i>  Monthly Promo codes to vendor website Special
-                          dedicated Customer service Team.
-                       </li>
-                       <li class="col-white"> <i class="fa fa-check col-white"> </i>  w/$10 add on to be BSB Product Tester  </li>
-                       <li class="col-white"> <i class="fa fa-check col-white"> </i> w/$10 add on for BSB T-shirt or other
-                          marketing product
-                       </li>
-                    </ul>
-                 </div>
-                 <div class="pricing-box-button">
-                   @if(Auth::check())
-                    <a href="{{url('user/membership/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
 
-                    @else
-                    <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
+                  <form method="post" action="{!! URL::route('user.paypal') !!}">
+                     @csrf
+                     <input type="hidden" name="pid" value="MQ==">
+                     <div class="pricing-box-features">
+                        <ul>
+                          <li class="col-white"> <i class="fa fa-check col-white"> </i>  Monthly Male  or Female Box  </li>
+                          <li class="col-white"> <i class="fa fa-check col-white"> </i> Recurring  Subscription w/30 day cancellation   </li>
+                          <li class="col-white"> <i class="fa fa-check col-white"> </i>  Access to over 10k business and services  </li>
+                          <li class="col-white"> <i class="fa fa-check col-white"> </i> Exclusive Customer experience Portal   </li>
+                          <li class="col-white"> <i class="fa fa-check col-white"> </i>  Monthly Promo codes to vendor website Special
+                             dedicated Customer service Team.
+                          </li>
+                          <li class="col-white"> 
+                              <input class="form-check-input" type="checkbox" value="10" id="flexCheckDefault0" name="addons[]">
+                              <label class="form-check-label"  for="flexCheckDefault0">
+                                 <p><span>   w/$10 add on to be BSB Product Tester  </span></p>
+                              </label>
+                          </li>
+                          <li class="col-white">
+                              <input class="form-check-input" type="checkbox" value="10" id="flexCheckDefault1" name="addons[]">
+                              <label class="form-check-label"  for="flexCheckDefault1">
+                                 <p><span>   w/$10 add on for BSB T-shirt or other marketing product  </span></p>
+                              </label>
+                          </li>
+                        </ul>
+                     </div>
 
-                    @endif
-                 </div>
+                     <div class="pricing-box-button">
+                      @if(Auth::check())
+                       <button type="submit" class="custom-btn1"> DISCOVER NOW </button>
+
+                       @else
+                       <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
+
+                       @endif
+                     </div>
+                  </form>
               </div>
            </div>
            <div class="col-md-4 col-lg-4 col-sm-4 col-12 no-pad">
@@ -273,31 +290,35 @@
                     {{--  <h5> Exclusive Experience </h5>  --}}
                     <h4> $20 </h4>
                  </div>
-                 <div class="pricing-box-features">
-                    <ul>
-                       <li> <i class="fa fa-check"> </i>  Low monthly service fee </li>
-                       <li> <i class="fa fa-check"> </i>  List your biggest seller or
-                          new product
-                       </li>
-                       <li> <i class="fa fa-check"> </i> Customer Buy direct from
-                          your website
-                       </li>
-                       <li> <i class="fa fa-check"> </i> No investory fees  </li>
-                       <li> <i class="fa fa-check"> </i> No Profit Share  </li>
-                       <li> <i class="fa fa-check"> </i> Cross marketing with other
-                          vendor
-                       </li>
-                    </ul>
-                 </div>
-                 <div class="pricing-box-button">
-                    @if(Auth::check('vendor_status',2))
-                    <a href="{{url('vendr/virtual/plan')}}" class="custom-btn1"> DISCOVER NOW </a>
+                  <form method="post" action="{!! URL::route('vendor.paypal') !!}">
+                     @csrf
+                     <input type="hidden" name="pid" value="Mg==">
+                     <div class="pricing-box-features">
+                       <ul>
+                          <li> <i class="fa fa-check"> </i>  Low monthly service fee </li>
+                          <li> <i class="fa fa-check"> </i>  List your biggest seller or
+                             new product
+                          </li>
+                          <li> <i class="fa fa-check"> </i> Customer Buy direct from
+                             your website
+                          </li>
+                          <li> <i class="fa fa-check"> </i> No investory fees  </li>
+                          <li> <i class="fa fa-check"> </i> No Profit Share  </li>
+                          <li> <i class="fa fa-check"> </i> Cross marketing with other
+                             vendor
+                          </li>
+                       </ul>
+                     </div>
+                     <div class="pricing-box-button">
+                       @if(Auth::check('vendor_status',2))
+                       <button class="custom-btn1"> DISCOVER NOW </button>
 
-                    @else
-                    <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
+                       @else
+                       <a href="{{url('login')}}" class="custom-btn1"> DISCOVER NOW </a>
 
-                    @endif
-                 </div>
+                       @endif
+                     </div>
+                  </form>
               </div>
            </div>
         </div>
