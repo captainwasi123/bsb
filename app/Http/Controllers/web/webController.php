@@ -19,7 +19,7 @@ class webController extends Controller
     function index(){
         $curr = date('Y-m-d');
         $data['categories'] =categories::all();
-        $data['users'] =User::where('is_feature',2)->whereHas('featured', function($q) use ($curr){
+        $data['users'] =User::where('is_feature',1)->whereHas('featured', function($q) use ($curr){
             return $q->where('start_date', '<=', $curr)
                         ->where('expired_date', '>=', $curr);
         })
@@ -90,7 +90,7 @@ class webController extends Controller
         $id = base64_decode($id);
         $data['category'] = categories::find($id);
         $data['products'] = product::where('category_id', $id)->where('is_featured', '1')->get();
-        $data['users'] =User::where('is_feature',2)->whereHas('featured', function($q) use ($curr){
+        $data['users'] =User::where('is_feature',1)->whereHas('featured', function($q) use ($curr){
             return $q->where('start_date', '<=', $curr)
                         ->where('expired_date', '>=', $curr);
         })
