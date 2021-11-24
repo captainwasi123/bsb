@@ -128,6 +128,10 @@ class paypalController extends Controller
             $st = BuyMP::where('user_id', Auth::id())->update([
                 'status' => '2'
             ]);
+            
+            $u = User::find(Auth::id());
+            $u->is_feature = '1';
+            $u->save();
 
             $date = date('Y-m-d');
                 

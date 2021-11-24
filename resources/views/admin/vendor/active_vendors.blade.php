@@ -51,9 +51,7 @@
                               <td><p class="cut-text">{{$val->description}}</p></td>
                               <td class="p-l-0 p-r-0 action">
                                   <a href="javascript:void(0)" class="btn btn-success gold-b rejectVendor" data-id="{{base64_encode($val->id)}}"><i class="fa fa-ban"></i></a>
-                                    @if($val->is_feature==2)
-                                    <a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="btn btn-success gold-b featureVendor"  data-toggle="tooltip" data-original-title="Feature Vendor"><i class="fa fa-check-circle"></i> </a>
-                                    @endif
+                                    
                               </td>
                           </tr>
                       @endforeach

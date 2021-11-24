@@ -23,7 +23,7 @@
                 <li class="nav-small-cap">VENDORS</li>
                 <li><a href="{{route('admin.vendor.vendorNew')}}">NEW REQUEST </a></li>
                 <li><a href="{{route('admin.vendor.vendorActive')}}">ACTIVE</a></li> 
-                <li><a href="{{route('admin.vendor.vendorFeatured')}}">FEATURED</a></li> 
+                <!-- <li><a href="{{route('admin.vendor.vendorFeatured')}}">FEATURED</a></li>  -->
                 <li><a href="{{route('admin.vendor.vendorBlocked')}}">BLOCKED</a></li> 
 
                 <li class="nav-small-cap">USERS</li>
