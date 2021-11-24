@@ -95,7 +95,7 @@ class adminController extends Controller
     function memberPending(){
 
         $data = array(
-            'vendor' => User::where('is_feature',2)
+            'vendor' => User::where('is_feature',1)
                             ->whereHas('featured', function($q){
                                 return $q->where('start_date', null);
                             })
@@ -108,7 +108,7 @@ class adminController extends Controller
 
         $curr = date('Y-m-d');
         $data = array(
-            'vendor' => User::where('is_feature',2)
+            'vendor' => User::where('is_feature',1)
                             ->whereHas('featured', function($q) use ($curr){
                                 return $q->where('start_date', '<=', $curr)
                                             ->where('expired_date', '>=', $curr);
@@ -123,7 +123,7 @@ class adminController extends Controller
         $curr = date('Y-m-d');
         $validate = date('Y-m-d', strtotime('+5 days', strtotime($curr)));
         $data = array(
-            'vendor' => User::where('is_feature',2)
+            'vendor' => User::where('is_feature',1)
                             ->whereHas('featured', function($q) use ($validate){
                                 return $q->where('expired_date', $validate);
                             })
