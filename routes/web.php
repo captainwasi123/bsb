@@ -134,7 +134,7 @@ Route::get('/clear-cache', function() {
 
 
 //Admin Dashboard
-    Route::prefix('admin')->namespace('admin')->group(function(){
+    Route::prefix('panel')->namespace('admin')->group(function(){
 
         Route::get('/login', 'authController@login')->name('admin.login');
         Route::post('/login', 'authController@loginSubmit');
