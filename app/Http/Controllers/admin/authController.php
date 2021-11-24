@@ -12,7 +12,7 @@ class authController extends Controller
 
     function index(){
         if(Auth::guard('admin')->check()){
-            return redirect(route('admin.dashboard'));
+            return redirect(route('admin.index'));
         }else{
             return redirect(route('admin.login'));
         }
