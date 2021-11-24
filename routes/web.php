@@ -134,15 +134,16 @@ Route::get('/clear-cache', function() {
 
 
 //Admin Dashboard
-    Route::prefix('panel')->namespace('admin')->group(function(){
+    Route::prefix('admin')->namespace('admin')->group(function(){
 
+        Route::get('/', 'authController@index');
         Route::get('/login', 'authController@login')->name('admin.login');
         Route::post('/login', 'authController@loginSubmit');
         Route::get('/logout', 'authController@logout')->name('admin.logout');
 
         Route::middleware('adminAuth')->group(function(){
 
-            Route::get('/', 'adminController@index')->name('admin.index');
+            Route::get('/dashboard', 'adminController@index')->name('admin.index');
 
             Route::prefix('vendor')->group(function(){
                 Route::get('new', 'adminController@vendorNew')->name('admin.vendor.vendorNew');
