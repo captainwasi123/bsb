@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
-                                <h3 class="">2456</h3>
+                                <h3 class="">0</h3>
                                 <h6 class="card-subtitle">Totla Products</h6></div>
                             <!-- <div class="col-12">
                                 <div class="progress">
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="m-b-0"><i class="mdi mdi-alert-circle text-success"></i></h2>
-                        <h3 class="">546</h3>
+                        <h3 class="">0</h3>
                         <h6 class="card-subtitle">Featuring Month</h6></div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="m-b-0"><i class="mdi mdi-wallet text-purple"></i></h2>
-                        <h3 class="">24561</h3>
+                        <h3 class="">0</h3>
                         <h6 class="card-subtitle">Membership Status</h6></div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
-                                <h3 class="">2456</h3>
+                                <h3 class="">0</h3>
                                 <h6 class="card-subtitle">Pending Products</h6></div>
                            
                         </div>
@@ -74,7 +74,7 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="m-b-0"><i class="mdi mdi-alert-circle text-success"></i></h2>
-                        <h3 class="">546</h3>
+                        <h3 class="">0</h3>
                         <h6 class="card-subtitle">Approved Project</h6></div>
                     
                 </div>
@@ -88,7 +88,7 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="m-b-0"><i class="mdi mdi-wallet text-purple"></i></h2>
-                        <h3 class="">24561</h3>
+                        <h3 class="">0</h3>
                         <h6 class="card-subtitle">Featured Products</h6>
                     </div>                   
                 </div>

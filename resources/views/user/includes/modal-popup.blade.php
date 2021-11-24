@@ -7,6 +7,6 @@
 </style>
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <img src="{{Url::to('/public/Noti-Popup.png')}}" width="100%"  />
+    <img src="{{Url::to('/public/Profile-Popup.png')}}" width="100%"  />
   </div>
 </div>
