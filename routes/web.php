@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
+
 //Website
     Route::namespace('web')->group(function(){
 
